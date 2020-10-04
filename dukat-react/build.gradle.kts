@@ -15,6 +15,7 @@ application {
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.3.9")
     implementation("com.github.ajalt:clikt:2.8.0")
+    implementation("com.beust:klaxon:5.4")
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {

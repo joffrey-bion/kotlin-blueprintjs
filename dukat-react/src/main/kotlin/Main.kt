@@ -11,6 +11,7 @@ import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.types.file
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.runBlocking
+import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
 
@@ -35,27 +36,40 @@ object Generate : CliktCommand(name = "generate", help = "Generate Kotlin from T
 
     private val outputDir by option("-d", help = "Overrides the directory in which to generate the new key classes") //
         .file(canBeFile = false, canBeDir = true, mustBeWritable = true) //
-        .defaultLazy { Paths.get("kotlin-blueprintjs/src/main/kotlin").toFile() }
+        .defaultLazy { Paths.get("kotlin-blueprintjs/src/main/kotlin").toFile() } // TODO change to src/main/kotlin
 
     private val outputDirPath: Path by lazy { Paths.get(outputDir.absolutePath) }
 
-    private val tsDir by argument(name = "TYPESCRIPT_DIR", help = "The directory containing the .d.ts files to convert") //
-        .file(mustExist = true, canBeFile = false, canBeDir = true, mustBeReadable = true) //
-        .defaultLazy { Paths.get("build/js/node_modules/@blueprintjs/core/lib/esm").toFile() }
+    private val nodeModulesDir by argument(
+        name = "NODE_MODULES_DIR",
+        help = "The node_modules directory containing the TS files to convert",
+    ).file(mustExist = true, canBeFile = false, canBeDir = true, mustBeReadable = true) //
+        .defaultLazy { Paths.get("build/js/node_modules").toFile() }
+
+    private val nodeModulesDirPath: Path by lazy { Paths.get(nodeModulesDir.absolutePath) }
 
     override fun run() = catchAndPrintErrors {
-        val target = Paths.get(outputDir.absolutePath)
-        val dirs = tsDir.recursivePathMappings(target) { it.extension == "ts" }
-        val tsFiles = dirs.flatMap { it.sourceFiles }.map { it.toPath() }
+        val indexTs = findModuleTypeDeclarationsIndex()
 
-        val ktFiles = step("Running dukat on ${tsFiles.size} TS files...") {
-            runDukat(tsFiles)
+        val ktFiles = step("Running dukat on $indexTs...") {
+            runDukat(listOf(indexTs))
         }
 
         step("Post-processing ${ktFiles.size} Kotlin files...") {
             val moduleInFilename = moduleName.replace('/', '_')
             ktFiles.filter { it.toString().endsWith("module_$moduleInFilename.kt") }.forEach(::postProcessKotlinFile)
         }
+    }
+
+    private fun findModuleTypeDeclarationsIndex(): Path {
+        val moduleDirPath = nodeModulesDirPath.resolve(moduleName)
+        val modulePackageJson = PackageJson.parse(moduleDirPath.resolve("package.json").toFile())
+        val typesRelativePath = modulePackageJson.typesPath ?: error("No 'typings' nor 'types' entry in package.json")
+        val typesPath = moduleDirPath.resolve(typesRelativePath)
+        if (!Files.exists(typesPath)) {
+            error("Bad typings entry in package.json: $typesPath does not exist")
+        }
+        return typesPath
     }
 
     private fun runDukat(tsFiles: List<Path>): List<Path> {
@@ -65,9 +79,9 @@ object Generate : CliktCommand(name = "generate", help = "Generate Kotlin from T
     }
 
     private fun postProcessKotlinFile(ktFilePath: Path) {
-        val file = ktFilePath.toFile()
-        val newContents = file.readText().addModuleAndPackage()
-        file.writeText(newContents)
+        ktFilePath.toFile().replaceContents {
+            it.addModuleAndPackage()
+        }
     }
 
     private fun String.addModuleAndPackage(): String {

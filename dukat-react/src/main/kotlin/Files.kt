@@ -35,3 +35,7 @@ private fun File.recursiveDirs(predicate: (File) -> Boolean): List<Directory> {
     val absPath = Paths.get(this.absolutePath)
     return if (files.isEmpty()) childDirs else childDirs + Directory(absPath, files.filter(predicate))
 }
+
+fun File.replaceContents(transform: (String) -> String) {
+    writeText(transform(readText()))
+}
