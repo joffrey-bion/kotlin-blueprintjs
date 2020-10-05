@@ -11,6 +11,7 @@ import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.types.file
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.runBlocking
+import java.io.File
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
@@ -74,13 +75,13 @@ object Generate : CliktCommand(name = "generate", help = "Generate Kotlin from T
 
     private fun runDukat(tsFiles: List<Path>): List<Path> {
         val filePaths = tsFiles.map { f -> f.toString() }.toTypedArray()
-        val lines = exec("dukat", "-m", moduleName, "-d", outputDir.toString(), *filePaths)
+        val lines = exec("cmd", "/c", "dukat", "-m", moduleName, "-d", outputDir.toString(), *filePaths)
         return lines.map { outputDirPath.resolve(it) }
     }
 
     private fun postProcessKotlinFile(ktFilePath: Path) {
         ktFilePath.toFile().replaceContents {
-            it.addModuleAndPackage()
+            it.addModuleAndPackage().fixConstructorTypeParameter().fixInitializedValues().fixPartials()
         }
     }
 
@@ -96,6 +97,40 @@ object Generate : CliktCommand(name = "generate", help = "Generate Kotlin from T
         }
     }
 
+    // https://github.com/Kotlin/dukat/issues/414
+    private fun String.fixConstructorTypeParameter(): String {
+        // class FileInput(props: P = definedExternally, context: Any = definedExternally) : AbstractPureComponent2__1<IFileInputProps>
+        // class Drawer(props: P = definedExternally, context: Any = definedExternally) : AbstractPureComponent2__1<IDrawerProps>
+        // class Icon(props: P = definedExternally, context: Any = definedExternally) : AbstractPureComponent2__1<IIconProps>
+        // class Button(props: P = definedExternally, context: Any = definedExternally) : AbstractButton<ButtonHTMLAttributes<HTMLButtonElement>> {
+        return replace(
+            Regex("""class ([^)]+)\(props: P = definedExternally, context: Any = definedExternally\)\s*:\s*AbstractPureComponent2__1<([^/>]+(/\*[^*]+\*/)?)>"""),
+            "class $1(props: $2 = definedExternally, context: Any = definedExternally): AbstractPureComponent2__1<$2>"
+        ).replace(
+            Regex("""class ([^)]+)\(props: P = definedExternally, context: Any = definedExternally\)\s*:\s*AbstractPureComponent2__2<([^,]+)\s*(,\s*[^,]+\s*)?>"""),
+            "class $1(props: $2 = definedExternally, context: Any = definedExternally): AbstractPureComponent2__2<$2$3>"
+        ).replace(
+            Regex("""class ([^)]+)\(props: P = definedExternally, context: Any = definedExternally\)\s*:\s*AbstractButton<([^/>]+(/\*[^*]+\*/)?)>"""),
+            "class $1(props: IButtonProps = definedExternally, context: Any = definedExternally): AbstractButton<$2>"
+        )
+    }
+
+    // https://github.com/Kotlin/dukat/issues/415
+    private fun String.fixInitializedValues(): String {
+        // var SIZE_SMALL: Any = 20
+        // var SIZE_SMALL: Any = "360px"
+        return replace(Regex("""(va[rl])\s+(\w+)\s*:\s*(\w+)\s*=\s*((\d+)|("[^"]*"))"""),
+            "$1 $2: $3 = definedExternally")
+    }
+
+    // https://github.com/Kotlin/dukat/issues/416
+    private fun String.fixPartials(): String {
+        // these interfaces only contains nullable properties anyway, so there is no need for their -Partial version
+        return replace("""IPropsPartial""", "IProps")
+            .replace("IIntentPropsPartial", "IIntentProps")
+            .replace("IPopoverSharedPropsPartial", "IPopoverSharedProps")
+    }
+
     private fun catchAndPrintErrors(block: suspend CoroutineScope.() -> Unit) {
         val result = runCatching { runBlocking { block() } }
         val exception = result.exceptionOrNull()
@@ -104,4 +139,8 @@ object Generate : CliktCommand(name = "generate", help = "Generate Kotlin from T
             exception.printStackTrace()
         }
     }
+}
+
+fun File.replaceContents(transform: (String) -> String) {
+    writeText(transform(readText()))
 }
