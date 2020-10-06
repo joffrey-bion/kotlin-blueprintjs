@@ -1,3 +1,5 @@
+import org.hildan.dukat.GenerateExternalsTask
+
 plugins {
     kotlin("js") version Versions.kotlin apply false
     `maven-publish`
@@ -91,4 +93,10 @@ fun MavenPublication.configurePomForMavenCentral(project: Project) = pom {
         developerConnection.set("scm:git:git@github.com:$githubSlug.git")
         url.set(githubRepoUrl)
     }
+}
+
+val generateBlueprintJSCore by tasks.registering(GenerateExternalsTask::class) {
+    group = "dukat"
+    moduleName = "@blueprintjs/core"
+    packageName = "com.palantir.blueprintjs.core"
 }

@@ -5,3 +5,8 @@ plugins {
 repositories {
     mavenCentral()
 }
+
+dependencies {
+    implementation(gradleApi())
+    implementation("com.beust:klaxon:5.4")
+}

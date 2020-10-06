@@ -1,4 +1,5 @@
 build
 .gradle
+src/main/generated
 
 .idea
