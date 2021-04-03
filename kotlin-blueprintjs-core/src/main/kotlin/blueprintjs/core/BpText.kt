@@ -1,8 +1,7 @@
 @file:JsModule("@blueprintjs/core")
 
-package com.palantir.blueprintjs.core
+package blueprintjs.core
 
-import react.PureComponent
 import react.RState
 import react.ReactElement
 
@@ -13,11 +12,17 @@ external interface ITextProps : IProps {
      * @default false
      */
     var ellipsize: Boolean?
+
     /**
      * HTML tag name to use for rendered element.
      * @default "div"
      */
-    var tagName: String?
+    var tagName: String? // keyof JSX.IntrinsicElements
+
+    /**
+     * HTML title of the element
+     */
+    var title: String?
 }
 
 external interface ITextState : RState {
@@ -25,6 +30,6 @@ external interface ITextState : RState {
     var isContentOverflowing: Boolean
 }
 
-external class Text : PureComponent<ITextProps, ITextState> {
+external class Text : AbstractPureComponent2<ITextProps, ITextState> {
     override fun render(): ReactElement
 }

@@ -1,9 +1,8 @@
 @file:JsModule("@blueprintjs/core")
 
-package com.palantir.blueprintjs.core
+package blueprintjs.core
 
 import org.w3c.dom.events.MouseEvent
-import react.PureComponent
 import react.RState
 import react.ReactElement
 
@@ -21,7 +20,7 @@ external interface ITagProps : IProps, IIntentProps {
     var fill: Boolean?
 
     /** Name of a Blueprint UI icon (or an icon element) to render before the children. */
-    var icon: IconName?
+    var icon: dynamic // IconName? | MaybeElement?
 
     /**
      * Whether the tag should visually respond to user interactions. If set
@@ -67,15 +66,20 @@ external interface ITagProps : IProps, IIntentProps {
     var onRemove: ((e: MouseEvent, tagProps: ITagProps) -> Unit)?
 
     /** Name of a Blueprint UI icon (or an icon element) to render after the children. */
-    var rightIcon: IconName?
+    var rightIcon: dynamic // IconName? | MaybeElement?
 
     /**
      * Whether this tag should have rounded ends.
      * @default false
      */
     var round: Boolean?
+
+    /**
+     * HTML title to be passed to the <Text> component
+     */
+    var htmlTitle: String?
 }
 
-external class Tag : PureComponent<ITagProps, RState> {
+external class Tag : AbstractPureComponent2<ITagProps, RState> {
     override fun render(): ReactElement
 }

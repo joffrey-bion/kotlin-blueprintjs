@@ -1,5 +1,6 @@
-package com.palantir.blueprintjs.core
+package blueprintjs.core
 
+import org.w3c.dom.HTMLButtonElement
 import org.w3c.dom.events.Event
 import org.w3c.dom.events.MouseEvent
 import react.RBuilder
@@ -7,8 +8,6 @@ import react.RHandler
 import react.ReactElement
 import react.buildElement
 import react.dom.h2
-
-typealias IconName = String
 
 fun RBuilder.bpIcon(
     name: IconName,
@@ -40,7 +39,7 @@ fun RBuilder.bpButton(
     rightIcon: IconName? = null,
     intent: Intent = Intent.NONE,
     onClick: ((event: MouseEvent) -> Unit)? = {},
-    block: RHandler<IButtonProps> = {},
+    block: RHandler<IButtonProps<HTMLButtonElement>> = {},
 ): ReactElement = child(Button::class) {
     attrs {
         this.title = title

@@ -1,8 +1,7 @@
 @file:JsModule("@blueprintjs/core")
 
-package com.palantir.blueprintjs.core
+package blueprintjs.core
 
-import react.PureComponent
 import react.RState
 import react.ReactElement
 
@@ -24,7 +23,7 @@ external interface ISpinnerProps : IProps, IIntentProps {
      * an `<svg>`, change this to an SVG element like `"g"`.
      * @default "div"
      */
-    var tagName: String?
+    var tagName: String? // keyof JSX.IntrinsicElements
     /**
      * A value between 0 and 1 (inclusive) representing how far along the operation is.
      * Values below 0 or above 1 will be interpreted as 0 or 1 respectively.
@@ -33,6 +32,12 @@ external interface ISpinnerProps : IProps, IIntentProps {
     var value: Double?
 }
 
-external class Spinner : PureComponent<ISpinnerProps, RState> {
+external class Spinner : AbstractPureComponent2<ISpinnerProps, RState> {
     override fun render(): ReactElement
+
+    companion object {
+        val SIZE_SMALL: Int = definedExternally
+        val SIZE_STANDARD: Int = definedExternally
+        val SIZE_LARGE: Int = definedExternally
+    }
 }

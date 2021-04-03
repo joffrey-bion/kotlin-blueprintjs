@@ -1,8 +1,7 @@
 @file:JsModule("@blueprintjs/core")
 
-package com.palantir.blueprintjs.core
+package blueprintjs.core
 
-import react.PureComponent
 import react.RState
 import react.ReactElement
 
@@ -41,6 +40,6 @@ external interface IDialogProps : IOverlayableProps, IBackdropProps, IProps {
     var transitionName: String?
 }
 
-external class Dialog : PureComponent<IDialogProps, RState> {
+external class Dialog : AbstractPureComponent2<IDialogProps, RState> {
     override fun render(): ReactElement
 }

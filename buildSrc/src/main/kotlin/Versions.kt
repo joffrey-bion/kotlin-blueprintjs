@@ -4,5 +4,5 @@ object Versions {
     val react = "17.0.2"
     val kotlinReact = "$react-$kotlinWrappers"
 
-    val bpCore = "3.38.1"
+    val bpCore = "3.42.0"
 }

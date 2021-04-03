@@ -1,8 +1,7 @@
 @file:JsModule("@blueprintjs/core")
 
-package com.palantir.blueprintjs.core
+package blueprintjs.core
 
-import react.PureComponent
 import react.RState
 import react.ReactElement
 
@@ -37,7 +36,7 @@ external interface IIconProps : IIntentProps, IProps {
      *   should avoid using `<Icon icon={<Element />}` directly; simply render
      *   `<Element />` instead.
      */
-    var icon: IconName
+    var icon: dynamic /* IconName | MaybeElement */
 
     /**
      * Size of the icon, in pixels. Blueprint contains 16px and 20px SVG icon
@@ -45,8 +44,10 @@ external interface IIconProps : IIntentProps, IProps {
      * @default Icon.SIZE_STANDARD = 16
      */
     var iconSize: Int?
+
     /** CSS style properties. */
     // var style: CSSProperties? // TODO
+
     /**
      * HTML tag to use for the rendered element.
      * @default "span"
@@ -62,7 +63,7 @@ external interface IIconProps : IIntentProps, IProps {
     var title: String?
 }
 
-external class Icon : PureComponent<IIconProps, RState> {
+external class Icon : AbstractPureComponent2<IIconProps, RState> {
 
     override fun render(): ReactElement?
 

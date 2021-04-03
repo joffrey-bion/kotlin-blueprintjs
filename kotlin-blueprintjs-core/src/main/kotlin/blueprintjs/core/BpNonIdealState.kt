@@ -1,8 +1,7 @@
 @file:JsModule("@blueprintjs/core")
 
-package com.palantir.blueprintjs.core
+package blueprintjs.core
 
-import react.PureComponent
 import react.RState
 import react.ReactElement
 
@@ -23,12 +22,12 @@ external interface INonIdealStateProps : IProps {
     var description: ReactElement?
 
     /** The name of a Blueprint icon or a JSX Element (such as `<Spinner/>`) to render above the title. */
-    var icon: IconName?
+    var icon: dynamic // IconName? | MaybeElement?
 
     /** The title of the non-ideal state. */
     var title: ReactElement?
 }
 
-external class NonIdealState : PureComponent<INonIdealStateProps, RState> {
+external class NonIdealState : AbstractPureComponent2<INonIdealStateProps, RState> {
     override fun render(): ReactElement?
 }

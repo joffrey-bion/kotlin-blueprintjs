@@ -1,10 +1,9 @@
 @file:JsModule("@blueprintjs/core")
 
-package com.palantir.blueprintjs.core
+package blueprintjs.core
 
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.events.Event
-import react.PureComponent
 import react.RProps
 import react.RState
 import react.ReactElement
@@ -155,6 +154,6 @@ external interface IOverlayState : RState {
     var hasEverOpened: Boolean?
 }
 
-external class Overlay : PureComponent<IOverlayProps, IOverlayState> {
+external class Overlay : AbstractPureComponent2<IOverlayProps, IOverlayState> {
     override fun render(): ReactElement
 }
