@@ -1,8 +1,8 @@
 object Versions {
-    val kotlin = "1.4.31"
-    val kotlinWrappers = "pre.150-kotlin-$kotlin"
-    val react = "17.0.2"
-    val kotlinReact = "$react-$kotlinWrappers"
+    const val kotlin = "1.4.31"
+    const val react = "17.0.2"
+    const val kotlinReact = "$react-pre.150-kotlin-$kotlin"
 
-    val bpCore = "3.42.0"
+    const val bpCore = "3.42.0"
+    const val bpIcons = "3.26.0"
 }
