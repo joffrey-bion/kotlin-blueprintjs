@@ -3,4 +3,6 @@ object Versions {
     val kotlinWrappers = "pre.150-kotlin-$kotlin"
     val react = "17.0.2"
     val kotlinReact = "$react-$kotlinWrappers"
+
+    val bpCore = "3.38.1"
 }

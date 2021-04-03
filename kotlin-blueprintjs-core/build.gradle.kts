@@ -2,8 +2,10 @@ plugins {
     kotlin("js")
 }
 
+version = "${Versions.bpCore}-${rootProject.version}"
+
 kotlin {
-    js {
+    js(BOTH) {
         browser()
         useCommonJs()
     }
@@ -15,7 +17,7 @@ kotlin {
                 implementation("org.jetbrains:kotlin-react-dom:${Versions.kotlinReact}")
                 implementation(npm("react-dom", Versions.react))
 
-                api(npm("@blueprintjs/core", "3.36.0"))
+                api(npm("@blueprintjs/core", Versions.bpCore))
             }
         }
     }
