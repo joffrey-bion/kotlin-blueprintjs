@@ -4,6 +4,7 @@ plugins {
     signing
     id("io.github.gradle-nexus.publish-plugin") version "1.0.0"
     id("org.jetbrains.dokka") version "1.4.30" apply false
+    id("org.hildan.github.changelog") version "1.6.0"
 }
 
 allprojects {
@@ -24,6 +25,11 @@ allprojects {
 val Project.githubUser: String? get() = findProperty("githubUser") as String? ?: System.getenv("GITHUB_USER")
 val githubSlug = "$githubUser/${rootProject.name}"
 val githubRepoUrl = "https://github.com/$githubSlug"
+
+changelog {
+    githubUser = project.githubUser
+    futureVersionTag = project.version.toString()
+}
 
 nexusPublishing {
     packageGroup.set("org.hildan")
