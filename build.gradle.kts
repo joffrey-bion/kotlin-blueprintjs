@@ -7,6 +7,8 @@ plugins {
     id("org.hildan.github.changelog") version "1.6.0"
 }
 
+description = "Kotlin wrappers for the BlueprintJS react library"
+
 allprojects {
     apply(plugin = "org.jetbrains.dokka")
 

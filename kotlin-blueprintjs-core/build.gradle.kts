@@ -3,6 +3,7 @@ plugins {
 }
 
 version = "${Versions.bpCore}-${rootProject.version}"
+description = "Kotlin wrapper for the @blueprintjs/core module"
 
 kotlin {
     js(BOTH) {

@@ -3,6 +3,7 @@ plugins {
 }
 
 version = "${Versions.bpIcons}-${rootProject.version}"
+description = "Kotlin wrapper for the @blueprintjs/icons module"
 
 kotlin {
     js(BOTH) {
