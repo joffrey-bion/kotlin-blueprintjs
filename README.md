@@ -1,6 +1,5 @@
 # BlueprintJS for Kotlin/React
 
-[![Maven central version](https://img.shields.io/maven-central/v/org.hildan.blueprintjs/kotlin-blueprintjs-core.svg)](http://mvnrepository.com/artifact/org.hildan.blueprintjs/kotlin-blueprintjs-core)
 [![Github Build](https://img.shields.io/github/workflow/status/joffrey-bion/kotlin-blueprintjs/CI%20Build?label=build&logo=github)](https://github.com/joffrey-bion/kotlin-blueprintjs/actions?query=workflow%3A%22CI+Build%22)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/joffrey-bion/kotlin-blueprintjs/blob/main/LICENSE)
 
@@ -27,6 +26,9 @@ The version of each wrapper module is composed of the wrapped module version fol
 this wrapper library.
 
 For example: `3.42.0-1` is the version `1` of the module wrapping `@blueprintjs/core` version `3.42.0`
+
+[![core version](https://img.shields.io/maven-central/v/org.hildan.blueprintjs/kotlin-blueprintjs-core.svg?label=kotlin-blueprintjs-core)](http://mvnrepository.com/artifact/org.hildan.blueprintjs/kotlin-blueprintjs-core) <br>
+[![icons version](https://img.shields.io/maven-central/v/org.hildan.blueprintjs/kotlin-blueprintjs-icons.svg?label=kotlin-blueprintjs-icons)](http://mvnrepository.com/artifact/org.hildan.blueprintjs/kotlin-blueprintjs-icons)
 
 ## Setup
 
