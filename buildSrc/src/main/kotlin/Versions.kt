@@ -5,4 +5,5 @@ object Versions {
 
     const val bpCore = "3.42.0"
     const val bpIcons = "3.26.0"
+    const val bpSelect = "3.15.9"
 }
