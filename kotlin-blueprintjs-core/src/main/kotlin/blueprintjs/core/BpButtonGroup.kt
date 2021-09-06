@@ -2,7 +2,7 @@
 
 package blueprintjs.core
 
-import react.RState
+import react.State
 import react.ReactElement
 
 external interface IButtonGroupProps : IProps, HTMLDivProps {
@@ -39,6 +39,6 @@ external interface IButtonGroupProps : IProps, HTMLDivProps {
     var vertical: Boolean?
 }
 
-external class ButtonGroup : AbstractPureComponent2<IButtonGroupProps, RState> {
+external class ButtonGroup : AbstractPureComponent2<IButtonGroupProps, State> {
     override fun render(): ReactElement?
 }

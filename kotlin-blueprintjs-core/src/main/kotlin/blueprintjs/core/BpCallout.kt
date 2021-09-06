@@ -2,7 +2,7 @@
 
 package blueprintjs.core
 
-import react.RState
+import react.State
 import react.ReactElement
 
 /** This component also supports the full range of HTML `<div>` props. */
@@ -31,6 +31,6 @@ external interface ICalloutProps : IIntentProps, IProps, HTMLDivProps {
     var title: String?
 }
 
-open external class Callout : AbstractPureComponent2<ICalloutProps, RState> {
+open external class Callout : AbstractPureComponent2<ICalloutProps, State> {
     override fun render(): ReactElement
 }

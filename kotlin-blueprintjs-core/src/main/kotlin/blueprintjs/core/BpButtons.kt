@@ -5,7 +5,7 @@ package blueprintjs.core
 import org.w3c.dom.HTMLAnchorElement
 import org.w3c.dom.HTMLButtonElement
 import org.w3c.dom.HTMLElement
-import react.RState
+import react.State
 import react.ReactElement
 
 external interface IButtonProps<E : HTMLElement /* HTMLButtonElement | HTMLAnchorElement */> : IActionProps,
@@ -64,7 +64,7 @@ external interface IButtonProps<E : HTMLElement /* HTMLButtonElement | HTMLAncho
 
 // IAnchorButtonProps in typealiases
 
-external interface IButtonState : RState {
+external interface IButtonState : State {
     var isActive: Boolean
 }
 

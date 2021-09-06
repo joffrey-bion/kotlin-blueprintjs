@@ -3,7 +3,7 @@
 package blueprintjs.core
 
 import org.w3c.dom.events.Event
-import react.RState
+import react.State
 import react.ReactElement
 
 external interface IHTMLSelectProps : IProps {
@@ -36,6 +36,6 @@ external interface IHTMLSelectProps : IProps {
     var value: dynamic /* String | Number | null */
 }
 
-open external class HTMLSelect : AbstractPureComponent2<IHTMLSelectProps, RState> {
+open external class HTMLSelect : AbstractPureComponent2<IHTMLSelectProps, State> {
     override fun render(): ReactElement
 }

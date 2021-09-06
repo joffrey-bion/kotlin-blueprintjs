@@ -2,18 +2,12 @@
 
 package blueprintjs.core
 
-import react.RState
+import react.State
 import react.ReactElement
 
 external interface INonIdealStateProps : IProps {
     /** An action to resolve the non-ideal state which appears after `description`. */
     var action: ReactElement?
-
-    /**
-     * Advanced usage: React `children` will appear last (after `action`).
-     * Avoid passing raw strings as they will not receive margins and disrupt the layout flow.
-     */
-    var children: ReactElement?
 
     /**
      * A longer description of the non-ideal state.
@@ -28,6 +22,6 @@ external interface INonIdealStateProps : IProps {
     var title: ReactElement?
 }
 
-external class NonIdealState : AbstractPureComponent2<INonIdealStateProps, RState> {
+external class NonIdealState : AbstractPureComponent2<INonIdealStateProps, State> {
     override fun render(): ReactElement?
 }

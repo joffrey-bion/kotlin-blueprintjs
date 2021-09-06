@@ -4,8 +4,8 @@ package blueprintjs.core
 
 import org.w3c.dom.HTMLDivElement
 import org.w3c.dom.events.Event
-import react.RProps
-import react.RState
+import react.PropsWithChildren
+import react.State
 import react.ReactElement
 
 external enum class PopoverInteractionKind {
@@ -156,7 +156,7 @@ external interface IPopoverSharedProps : IOverlayableProps, IProps {
      * HTML props to spread to target element. Use `targetTagName` to change
      * the type of element rendered. Note that `ref` is not supported.
      */
-    var targetProps: RProps? // React.HTMLAttributes<HTMLElement>
+    var targetProps: PropsWithChildren? // React.HTMLAttributes<HTMLElement>
     /**
      * HTML tag name for the target element. This must be an HTML element to
      * ensure that it supports the necessary DOM event handlers.
@@ -194,7 +194,7 @@ external interface IPopoverSharedProps : IOverlayableProps, IProps {
 
 external interface IPopoverProps : IPopoverSharedProps {
     /** HTML props for the backdrop element. Can be combined with `backdropClassName`. */
-    var backdropProps: RProps? /* React.HTMLProps<HTMLDivElement>; */
+    var backdropProps: PropsWithChildren? /* React.HTMLProps<HTMLDivElement>; */
 
     /**
      * The content displayed inside the popover. This can instead be provided as
@@ -235,7 +235,7 @@ external interface IPopoverProps : IPopoverSharedProps {
     var target: dynamic /* String? | JSX.Element? */
 }
 
-external interface IPopoverState : RState {
+external interface IPopoverState : State {
     var transformOrigin: String
     var isOpen: Boolean
     var hasDarkParent: Boolean

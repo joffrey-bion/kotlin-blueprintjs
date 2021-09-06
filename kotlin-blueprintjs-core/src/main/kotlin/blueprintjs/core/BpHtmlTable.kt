@@ -3,7 +3,7 @@
 package blueprintjs.core
 
 import org.w3c.dom.HTMLTableElement
-import react.RState
+import react.State
 import react.ReactElement
 
 // in BlueprintJS, IHTMLTableProps doesn't extend IProps, and yet className works fine...
@@ -24,6 +24,6 @@ external interface IHTMLTableProps : IProps, IElementRefProps<HTMLTableElement> 
     var striped: Boolean?
 }
 
-open external class HTMLTable : AbstractPureComponent2<IHTMLTableProps, RState> {
+open external class HTMLTable : AbstractPureComponent2<IHTMLTableProps, State> {
     override fun render(): ReactElement
 }

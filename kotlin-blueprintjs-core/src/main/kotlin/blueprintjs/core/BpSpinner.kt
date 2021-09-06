@@ -2,7 +2,7 @@
 
 package blueprintjs.core
 
-import react.RState
+import react.State
 import react.ReactElement
 
 external interface ISpinnerProps : IProps, IIntentProps {
@@ -32,7 +32,7 @@ external interface ISpinnerProps : IProps, IIntentProps {
     var value: Double?
 }
 
-external class Spinner : AbstractPureComponent2<ISpinnerProps, RState> {
+external class Spinner : AbstractPureComponent2<ISpinnerProps, State> {
     override fun render(): ReactElement
 
     companion object {

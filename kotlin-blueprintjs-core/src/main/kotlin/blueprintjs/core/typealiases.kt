@@ -1,7 +1,6 @@
 package blueprintjs.core
 
 import org.w3c.dom.HTMLAnchorElement
-import react.RProps
 import react.ReactElement
 
 /**

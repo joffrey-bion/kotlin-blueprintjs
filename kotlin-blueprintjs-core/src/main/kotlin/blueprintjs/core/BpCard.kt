@@ -4,7 +4,7 @@ package blueprintjs.core
 
 import org.w3c.dom.events.MouseEvent
 import react.PureComponent
-import react.RState
+import react.State
 import react.ReactElement
 
 external interface ICardProps : IProps {
@@ -35,6 +35,6 @@ external interface ICardProps : IProps {
     var onClick: ((e: MouseEvent) -> Unit)?
 }
 
-open external class Card : AbstractPureComponent2<ICardProps, RState> {
+open external class Card : AbstractPureComponent2<ICardProps, State> {
     override fun render(): ReactElement
 }

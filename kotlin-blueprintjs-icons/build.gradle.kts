@@ -2,7 +2,8 @@ plugins {
     kotlin("js")
 }
 
-version = "${Versions.bpIcons}-${rootProject.version}"
+val bpIconsVersion = libs.versions.blueprintjs.core.get()
+version = "$bpIconsVersion-${rootProject.version}"
 description = "Kotlin wrapper for the @blueprintjs/icons module"
 
 kotlin {
@@ -13,12 +14,14 @@ kotlin {
     sourceSets {
         main {
             dependencies {
-                implementation("org.jetbrains:kotlin-react:${Versions.kotlinReact}")
-                implementation(npm("react", Versions.react))
-                implementation("org.jetbrains:kotlin-react-dom:${Versions.kotlinReact}")
-                implementation(npm("react-dom", Versions.react))
+                val kotlinWrappers = libs.versions.kotlin.wrappers.get()
+                val kotlinReact = "${libs.versions.react.get()}-$kotlinWrappers"
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-react:$kotlinReact")
+                implementation(npm("react", libs.versions.react.get()))
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:$kotlinReact")
+                implementation(npm("react-dom", libs.versions.react.get()))
 
-                api(npm("@blueprintjs/icons", Versions.bpIcons))
+                api(npm("@blueprintjs/core", libs.versions.blueprintjs.icons.get()))
             }
         }
     }

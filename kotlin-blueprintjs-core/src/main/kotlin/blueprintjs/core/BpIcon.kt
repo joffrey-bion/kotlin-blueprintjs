@@ -2,7 +2,7 @@
 
 package blueprintjs.core
 
-import react.RState
+import react.State
 import react.ReactElement
 
 external interface IIconProps : IIntentProps, IProps {
@@ -63,7 +63,7 @@ external interface IIconProps : IIntentProps, IProps {
     var title: String?
 }
 
-external class Icon : AbstractPureComponent2<IIconProps, RState> {
+external class Icon : AbstractPureComponent2<IIconProps, State> {
 
     override fun render(): ReactElement?
 

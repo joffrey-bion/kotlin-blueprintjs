@@ -2,7 +2,7 @@
 
 package blueprintjs.core
 
-import react.RState
+import react.State
 import react.ReactElement
 
 external interface IDialogProps : IOverlayableProps, IBackdropProps, IProps {
@@ -40,6 +40,6 @@ external interface IDialogProps : IOverlayableProps, IBackdropProps, IProps {
     var transitionName: String?
 }
 
-external class Dialog : AbstractPureComponent2<IDialogProps, RState> {
+external class Dialog : AbstractPureComponent2<IDialogProps, State> {
     override fun render(): ReactElement
 }

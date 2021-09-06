@@ -17,7 +17,7 @@ fun RBuilder.bpIcon(
     alt: String? = null,
     className: String? = null,
     block: RHandler<IIconProps> = {},
-): ReactElement = child(Icon::class) {
+): Unit = child(Icon::class) {
     attrs {
         this.icon = name
         this.iconSize = size
@@ -40,7 +40,7 @@ fun RBuilder.bpButton(
     intent: Intent = Intent.NONE,
     onClick: ((event: MouseEvent) -> Unit)? = {},
     block: RHandler<IButtonProps<HTMLButtonElement>> = {},
-): ReactElement = child(Button::class) {
+): Unit = child(Button::class) {
     attrs {
         this.title = title
         this.minimal = minimal
@@ -59,7 +59,7 @@ fun RBuilder.bpButtonGroup(
     large: Boolean = false,
     minimal: Boolean = false,
     block: RHandler<IButtonGroupProps> = {},
-): ReactElement = child(ButtonGroup::class) {
+): Unit = child(ButtonGroup::class) {
     attrs {
         this.large = large
         this.minimal = minimal
@@ -73,7 +73,7 @@ fun RBuilder.bpInputGroup(
     rightElement: ReactElement? = null,
     value: String? = null,
     onChange: (Event) -> Unit,
-): ReactElement = child(InputGroup::class) {
+): Unit = child(InputGroup::class) {
     attrs {
         this.large = large
         this.placeholder = placeholder
@@ -93,7 +93,7 @@ fun RBuilder.bpTag(
     icon: String? = null,
     className: String? = null,
     block: RHandler<ITagProps> = {},
-): ReactElement = child(Tag::class) {
+): Unit = child(Tag::class) {
     attrs {
         intent?.let { this.intent = it }
         minimal?.let { this.minimal = it }
@@ -111,7 +111,7 @@ fun RBuilder.bpText(
     ellipsize: Boolean? = null,
     tagName: String? = null,
     block: RHandler<ITextProps> = {},
-): ReactElement = child(Text::class) {
+): Unit = child(Text::class) {
     attrs {
         ellipsize?.let { this.ellipsize = it }
         tagName?.let { this.tagName = it }
@@ -125,7 +125,7 @@ fun RBuilder.bpSpinner(
     intent: Intent? = null,
     tagName: String? = null,
     block: RHandler<ISpinnerProps> = {},
-): ReactElement = child(Spinner::class) {
+): Unit = child(Spinner::class) {
     attrs {
         size?.let { this.size = it }
         value?.let { this.value = it }
@@ -140,15 +140,13 @@ fun RBuilder.bpNonIdealState(
     title: ReactElement? = null,
     description: ReactElement? = null,
     action: ReactElement? = null,
-    children: ReactElement? = null,
     block: RHandler<INonIdealStateProps> = {},
-): ReactElement = child(NonIdealState::class) {
+) = child(NonIdealState::class) {
     attrs {
         icon?.let { this.icon = it }
         title?.let { this.title = it }
         description?.let { this.description = it }
         action?.let { this.action = it }
-        children?.let { this.children = it }
     }
     block()
 }
@@ -158,9 +156,8 @@ fun RBuilder.bpNonIdealState(
     title: String,
     description: ReactElement? = null,
     action: ReactElement? = null,
-    children: ReactElement? = null,
     block: RHandler<INonIdealStateProps> = {},
-): ReactElement = bpNonIdealState(icon, buildElement { h2 { +title } }, description, action, children, block)
+): Unit = bpNonIdealState(icon, buildElement { h2 { +title } }, description, action, block)
 
 fun RBuilder.bpOverlay(
     isOpen: Boolean,
@@ -172,7 +169,7 @@ fun RBuilder.bpOverlay(
     canOutsideClickClose: Boolean = true,
     onClose: () -> Unit = {},
     block: RHandler<IOverlayProps> = {},
-): ReactElement = child(Overlay::class) {
+): Unit = child(Overlay::class) {
     attrs {
         this.isOpen = isOpen
         this.autoFocus = autoFocus
@@ -200,7 +197,7 @@ fun RBuilder.bpDialog(
     transitionName: String? = null,
     onClose: () -> Unit = {},
     block: RHandler<IDialogProps> = {},
-): ReactElement = child(Dialog::class) {
+): Unit = child(Dialog::class) {
     attrs {
         this.isOpen = isOpen
         if (title != null) {
@@ -239,7 +236,7 @@ fun RBuilder.bpDialog(
     transitionName: String? = null,
     onClose: () -> Unit = {},
     block: RHandler<IDialogProps> = {},
-): ReactElement = bpDialog(
+): Unit = bpDialog(
     isOpen = isOpen,
     title = title?.let { buildElement { +title } },
     icon = icon?.let { buildElement { bpIcon(name = icon, intent = iconIntent) } },
@@ -268,7 +265,7 @@ fun RBuilder.bpPopover(
     portalClassName: String? = null,
     onClose: () -> Unit = {},
     block: RHandler<IPopoverProps> = {},
-): ReactElement = child(Popover::class) {
+): Unit = child(Popover::class) {
     attrs {
         this.interactionKind = interactionKind
         this.minimal = minimal
@@ -290,7 +287,7 @@ fun RBuilder.bpCallout(
     icon: IconName? = null,
     title: String? = null,
     block: RHandler<ICalloutProps> = {},
-): ReactElement = child(Callout::class) {
+): Unit = child(Callout::class) {
     attrs {
         if (icon != null) {
             this.icon = icon
@@ -307,7 +304,7 @@ fun RBuilder.bpCard(
     className: String? = null,
     onClick: () -> Unit = {},
     block: RHandler<ICardProps> = {},
-): ReactElement = child(Card::class) {
+): Unit = child(Card::class) {
     attrs {
         this.elevation = elevation
         this.interactive = interactive
@@ -323,7 +320,7 @@ fun RBuilder.bpHtmlTable(
     condensed: Boolean = false,
     striped: Boolean = false,
     block: RHandler<IHTMLTableProps> = {},
-): ReactElement = child(HTMLTable::class) {
+): Unit = child(HTMLTable::class) {
     attrs {
         this.bordered = bordered
         this.interactive = interactive
@@ -336,7 +333,7 @@ fun RBuilder.bpHtmlTable(
 fun RBuilder.bpDivider(
     tagName: String? = null,
     block: RHandler<IDividerProps> = {},
-): ReactElement = child(Divider::class) {
+): Unit = child(Divider::class) {
     attrs {
         if (tagName != null) {
             this.tagName = tagName

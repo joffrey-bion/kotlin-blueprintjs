@@ -3,7 +3,7 @@
 package blueprintjs.core
 
 import org.w3c.dom.events.MouseEvent
-import react.RState
+import react.State
 import react.ReactElement
 
 external interface ITagProps : IProps, IIntentProps {
@@ -80,6 +80,6 @@ external interface ITagProps : IProps, IIntentProps {
     var htmlTitle: String?
 }
 
-external class Tag : AbstractPureComponent2<ITagProps, RState> {
+external class Tag : AbstractPureComponent2<ITagProps, State> {
     override fun render(): ReactElement
 }

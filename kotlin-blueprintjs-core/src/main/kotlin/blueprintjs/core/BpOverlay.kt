@@ -4,8 +4,8 @@ package blueprintjs.core
 
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.events.Event
-import react.RProps
-import react.RState
+import react.PropsWithChildren
+import react.State
 import react.ReactElement
 
 external interface IOverlayableProps : IOverlayLifecycleProps {
@@ -119,7 +119,7 @@ external interface IBackdropProps {
     var backdropClassName: String?
 
     /** HTML props for the backdrop element. */
-    var backdropProps: RProps? // React.HTMLProps<HTMLDivElement>?
+    var backdropProps: PropsWithChildren? // React.HTMLProps<HTMLDivElement>?
 
     /**
      * Whether clicking outside the overlay element (either on backdrop when present or on document)
@@ -150,7 +150,7 @@ external interface IOverlayProps : IOverlayableProps, IBackdropProps, IProps {
     var transitionName: String?
 }
 
-external interface IOverlayState : RState {
+external interface IOverlayState : State {
     var hasEverOpened: Boolean?
 }
 

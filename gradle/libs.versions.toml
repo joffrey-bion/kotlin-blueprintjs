@@ -1,0 +1,11 @@
+[versions]
+# Frontend wrapper versions from https://github.com/JetBrains/kotlin-wrappers/blob/master/gradle.properties
+kotlin-wrappers = "pre.242-kotlin-1.5.30"
+react = "17.0.2"
+reactRedux = "7.2.4"
+reactRouterDom = "5.2.0"
+redux = "4.1.1"
+styledComponents = "5.3.1"
+
+blueprintjs-core = "3.42.0"
+blueprintjs-icons = "3.26.0"

@@ -2,7 +2,7 @@
 
 package blueprintjs.core
 
-import react.RState
+import react.State
 import react.ReactElement
 
 external interface ITextProps : IProps {
@@ -25,7 +25,7 @@ external interface ITextProps : IProps {
     var title: String?
 }
 
-external interface ITextState : RState {
+external interface ITextState : State {
     var textContent: String
     var isContentOverflowing: Boolean
 }

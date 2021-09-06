@@ -2,7 +2,7 @@
 
 package blueprintjs.core
 
-import react.RState
+import react.State
 import react.ReactElement
 
 external interface IDividerProps : IProps {
@@ -14,6 +14,6 @@ external interface IDividerProps : IProps {
     var tagName: Any?
 }
 
-open external class Divider : AbstractPureComponent2<IDividerProps, RState> {
+open external class Divider : AbstractPureComponent2<IDividerProps, State> {
     override fun render(): ReactElement
 }

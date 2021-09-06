@@ -5,7 +5,7 @@ package blueprintjs.core
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.events.Event
 import org.w3c.dom.events.MouseEvent
-import react.RProps
+import react.PropsWithChildren
 
 /**
  * Alias for all valid HTML props for `<div>` element.
@@ -35,7 +35,7 @@ external interface HTMLInputProps {
 /**
  * A shared base interface for all Blueprint component props.
  */
-external interface IProps : RProps {
+external interface IProps : PropsWithChildren {
     /** A space-delimited list of class names to pass along to a child element. */
     var className: String?
 }

@@ -1,10 +1,10 @@
 plugins {
-    kotlin("js") version Versions.kotlin apply false
+    kotlin("js") version "1.5.30" apply false
     `maven-publish`
     signing
     id("io.github.gradle-nexus.publish-plugin") version "1.0.0"
-    id("org.jetbrains.dokka") version "1.4.30" apply false
-    id("org.hildan.github.changelog") version "1.6.0"
+    id("org.jetbrains.dokka") version "1.5.0"
+    id("org.hildan.github.changelog") version "1.8.0"
 }
 
 description = "Kotlin wrappers for the BlueprintJS react library"
@@ -16,11 +16,6 @@ allprojects {
 
     repositories {
         mavenCentral()
-        // for kotlin-wrappers resolutions
-        maven(url = "https://maven.pkg.jetbrains.space/kotlin/p/kotlin/kotlin-js-wrappers")
-        // for kotlinx-html (dependency of kotlin-react-dom)
-        maven(url = "https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven")
-        jcenter() // for kotlinx-html-jvm:0.7.2 needed by dokka (and not migrated)
     }
 }
 

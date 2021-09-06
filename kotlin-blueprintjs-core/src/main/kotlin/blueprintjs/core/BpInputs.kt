@@ -4,7 +4,7 @@ package blueprintjs.core
 
 import org.w3c.dom.HTMLInputElement
 import react.PureComponent
-import react.RState
+import react.State
 import react.ReactElement
 
 @Deprecated("Deprecated in TypeScript", ReplaceWith("InputGroupProps2"))
@@ -136,7 +136,7 @@ external interface IInputGroupProps2 : HTMLInputProps, IControlledProps2, IInten
     var type: String?
 }
 
-external interface IInputGroupState : RState {
+external interface IInputGroupState : State {
     var leftElementWidth: Int
     var rightElementWidth: Int
 }
