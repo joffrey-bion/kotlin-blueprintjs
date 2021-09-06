@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "New version (and git tag)"
+        description: "New wrapper version (single digit)"
         required: true
 
 jobs:
