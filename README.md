@@ -33,20 +33,7 @@ For example: `3.42.0-1` is the version `1` of the module wrapping `@blueprintjs/
 ## Setup
 
 These blueprintjs wrappers are published to Maven Central.
-However, Kotlin react wrappers have been moved to Space maven repositories (due to Bintray shutting down), 
-so make sure you have the following repositories declared:
-
-```kotlin
-repositories {
-    mavenCentral()
-    // for kotlin-wrappers resolutions
-    maven(url = "https://maven.pkg.jetbrains.space/kotlin/p/kotlin/kotlin-js-wrappers")
-    // for kotlinx-html (dependency of kotlin-react-dom)
-    maven(url = "https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven")
-}
-```
-
-Then add the dependencies on the BlueprintJS modules you need, along with the corresponding Kotlin wrapper:
+You should add the dependencies on the BlueprintJS modules you need, along with the corresponding Kotlin wrapper:
 
 ```kotlin
 kotlin {
@@ -57,7 +44,7 @@ kotlin {
     sourceSets {
         main {
             dependencies {
-                val bpWrapperVersion = "1"
+                val bpWrapperVersion = "2"
                 val bpCoreVersion = "3.42.0"
                 val bpIconsVersion = "3.26.0"
                 implementation("org.hildan.blueprintjs:kotlin-blueprintjs-core:$bpCoreVersion-$bpWrapperVersion")
