@@ -1,5 +1,17 @@
 # Change Log
 
+## [4](https://github.com/joffrey-bion/kotlin-blueprintjs/tree/4) (2021-09-07)
+[View commits](https://github.com/joffrey-bion/kotlin-blueprintjs/compare/3...4)
+
+**Closed issues:**
+
+- Upgrade blueprintjs\-icons to 3.29.0 [\#6](https://github.com/joffrey-bion/kotlin-blueprintjs/issues/6)
+- Upgrade blueprintjs\-core to 3.49.1 [\#5](https://github.com/joffrey-bion/kotlin-blueprintjs/issues/5)
+
+**Fixed bugs:**
+
+- Incorrect transitive npm dependency on blueprintjs\-core instead of blueprintjs\-icons [\#7](https://github.com/joffrey-bion/kotlin-blueprintjs/issues/7)
+
 ## [3](https://github.com/joffrey-bion/kotlin-blueprintjs/tree/3) (2021-09-06)
 [View commits](https://github.com/joffrey-bion/kotlin-blueprintjs/compare/2...3)
 
@@ -15,7 +27,7 @@
 - Upgrade to Kotlin 1.5.30 [\#3](https://github.com/joffrey-bion/kotlin-blueprintjs/issues/3)
 
 ## [1](https://github.com/joffrey-bion/kotlin-blueprintjs/tree/1) (2021-04-04)
-[View commits](https://github.com/joffrey-bion/kotlin-blueprintjs/compare/54a589cffbf5e1d63ee8d40b153d17c10abac0bf...1)
+[View commits](https://github.com/joffrey-bion/kotlin-blueprintjs/compare/76ae54225eb51d4f1dd2d09eb0a8aac10b8cb919...1)
 
 **Implemented enhancements:**
 
