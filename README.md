@@ -33,26 +33,9 @@ For example: `3.42.0-1` is the version `1` of the module wrapping `@blueprintjs/
 ## Setup
 
 These blueprintjs wrappers are published to Maven Central.
-You should add the dependencies on the BlueprintJS modules you need, along with the corresponding Kotlin wrapper:
+You can add them to your Gradle dependencies the usual way (you don't need to add transitive BlueprintJS NPM dependencies anymore):
 
 ```kotlin
-kotlin {
-    js {
-        browser()
-        useCommonJs()
-    }
-    sourceSets {
-        main {
-            dependencies {
-                val bpWrapperVersion = "2"
-                val bpCoreVersion = "3.42.0"
-                val bpIconsVersion = "3.26.0"
-                implementation("org.hildan.blueprintjs:kotlin-blueprintjs-core:$bpCoreVersion-$bpWrapperVersion")
-                implementation("org.hildan.blueprintjs:kotlin-blueprintjs-icons:$bpIconsVersion-$bpWrapperVersion")
-                implementation(npm("@blueprintjs/core", bpCoreVersion))
-                implementation(npm("@blueprintjs/icons", bpIconsVersion))
-            }
-        }
-    }
-}
+implementation("org.hildan.blueprintjs:kotlin-blueprintjs-core:3.49.1-4")
+implementation("org.hildan.blueprintjs:kotlin-blueprintjs-icons:3.29.0-4")
 ```
