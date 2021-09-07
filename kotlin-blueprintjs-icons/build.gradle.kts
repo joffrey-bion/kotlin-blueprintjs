@@ -14,12 +14,8 @@ kotlin {
     sourceSets {
         main {
             dependencies {
-                val kotlinWrappers = libs.versions.kotlin.wrappers.get()
-                val kotlinReact = "${libs.versions.react.get()}-$kotlinWrappers"
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-react:$kotlinReact")
-                implementation(npm("react", libs.versions.react.get()))
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:$kotlinReact")
-                implementation(npm("react-dom", libs.versions.react.get()))
+                implementation(libs.kotlin.wrappers.react.base)
+                implementation(libs.kotlin.wrappers.react.dom)
 
                 api(npm("@blueprintjs/icons", bpIconsVersion))
             }
