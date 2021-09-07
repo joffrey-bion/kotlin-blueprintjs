@@ -21,7 +21,7 @@ kotlin {
                 implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:$kotlinReact")
                 implementation(npm("react-dom", libs.versions.react.get()))
 
-                api(npm("@blueprintjs/core", bpIconsVersion))
+                api(npm("@blueprintjs/icons", bpIconsVersion))
             }
         }
     }
