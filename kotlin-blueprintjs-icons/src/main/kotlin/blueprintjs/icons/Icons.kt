@@ -24,10 +24,12 @@ external class IconNames {
         val ALIGNMENT_TOP: String = definedExternally
         val ALIGNMENT_VERTICAL_CENTER: String = definedExternally
         val ANNOTATION: String = definedExternally
+        val ANTENNA: String = definedExternally
         val APP_HEADER: String = definedExternally
         val APPLICATION: String = definedExternally
         val APPLICATIONS: String = definedExternally
         val ARCHIVE: String = definedExternally
+        val AREA_OF_INTEREST: String = definedExternally
         val ARRAY: String = definedExternally
         val ARRAY_BOOLEAN: String = definedExternally
         val ARRAY_DATE: String = definedExternally
@@ -59,6 +61,7 @@ external class IconNames {
         val BOX: String = definedExternally
         val BRIEFCASE: String = definedExternally
         val BRING_DATA: String = definedExternally
+        val BUGGY: String = definedExternally
         val BUILD: String = definedExternally
         val CALCULATOR: String = definedExternally
         val CALENDAR: String = definedExternally
@@ -225,12 +228,14 @@ external class IconNames {
         val HAT: String = definedExternally
         val HEADER: String = definedExternally
         val HEADER_ONE: String = definedExternally
+        val HEADER_THREE: String = definedExternally
         val HEADER_TWO: String = definedExternally
         val HEADSET: String = definedExternally
         val HEART: String = definedExternally
         val HEART_BROKEN: String = definedExternally
         val HEAT_GRID: String = definedExternally
         val HEATMAP: String = definedExternally
+        val HELICOPTER: String = definedExternally
         val HELP: String = definedExternally
         val HELPER_MANAGEMENT: String = definedExternally
         val HIGH_PRIORITY: String = definedExternally
@@ -304,6 +309,8 @@ external class IconNames {
         val LOG_OUT: String = definedExternally
         val MANUAL: String = definedExternally
         val MANUALLY_ENTERED_DATA: String = definedExternally
+        val MANY_TO_MANY: String = definedExternally
+        val MANY_TO_ONE: String = definedExternally
         val MAP: String = definedExternally
         val MAP_CREATE: String = definedExternally
         val MAP_MARKER: String = definedExternally
@@ -347,6 +354,8 @@ external class IconNames {
         val OFFLINE: String = definedExternally
         val OIL_FIELD: String = definedExternally
         val ONE_COLUMN: String = definedExternally
+        val ONE_TO_MANY: String = definedExternally
+        val ONE_TO_ONE: String = definedExternally
         val OUTDATED: String = definedExternally
         val PAGE_LAYOUT: String = definedExternally
         val PANEL_STATS: String = definedExternally
@@ -394,6 +403,8 @@ external class IconNames {
         val RIG: String = definedExternally
         val RIGHT_JOIN: String = definedExternally
         val RING: String = definedExternally
+        val ROCKET: String = definedExternally
+        val ROCKET_SLANT: String = definedExternally
         val ROTATE_DOCUMENT: String = definedExternally
         val ROTATE_PAGE: String = definedExternally
         val ROUTE: String = definedExternally
@@ -432,18 +443,6 @@ external class IconNames {
         val SMALL_TICK: String = definedExternally
         val SNOWFLAKE: String = definedExternally
         val SOCIAL_MEDIA: String = definedExternally
-        val SORT: String = definedExternally
-        val SORT_ALPHABETICAL: String = definedExternally
-        val SORT_ALPHABETICAL_DESC: String = definedExternally
-        val SORT_ASC: String = definedExternally
-        val SORT_DESC: String = definedExternally
-        val SORT_NUMERICAL: String = definedExternally
-        val SORT_NUMERICAL_DESC: String = definedExternally
-        val SPLIT_COLUMNS: String = definedExternally
-        val SQUARE: String = definedExternally
-        val STACKED_CHART: String = definedExternally
-        val STAR: String = definedExternally
-        val STAR_EMPTY: String = definedExternally
         val STEP_BACKWARD: String = definedExternally
         val STEP_CHART: String = definedExternally
         val STEP_FORWARD: String = definedExternally
@@ -460,8 +459,10 @@ external class IconNames {
         val SYMBOL_SQUARE: String = definedExternally
         val SYMBOL_TRIANGLE_DOWN: String = definedExternally
         val SYMBOL_TRIANGLE_UP: String = definedExternally
+        val SYRINGE: String = definedExternally
         val TAG: String = definedExternally
         val TAKE_ACTION: String = definedExternally
+        val TANK: String = definedExternally
         val TAXI: String = definedExternally
         val TEXT_HIGHLIGHT: String = definedExternally
         val TH: String = definedExternally
@@ -469,6 +470,7 @@ external class IconNames {
         val TH_DISCONNECT: String = definedExternally
         val TH_FILTERED: String = definedExternally
         val TH_LIST: String = definedExternally
+        val THIRD_PARTY: String = definedExternally
         val THUMBS_DOWN: String = definedExternally
         val THUMBS_UP: String = definedExternally
         val TICK: String = definedExternally
@@ -520,5 +522,18 @@ external class IconNames {
         val ZOOM_IN: String = definedExternally
         val ZOOM_OUT: String = definedExternally
         val ZOOM_TO_FIT: String = definedExternally
+        val SORT: String = definedExternally
+        val SORT_ALPHABETICAL: String = definedExternally
+        val SORT_ALPHABETICAL_DESC: String = definedExternally
+        val SORT_ASC: String = definedExternally
+        val SORT_DESC: String = definedExternally
+        val SORT_NUMERICAL: String = definedExternally
+        val SORT_NUMERICAL_DESC: String = definedExternally
+        val SPLIT_COLUMNS: String = definedExternally
+        val SQUARE: String = definedExternally
+        val STACKED_CHART: String = definedExternally
+        val STADIUM_GEOMETRY: String = definedExternally
+        val STAR: String = definedExternally
+        val STAR_EMPTY: String = definedExternally
     }
 }
