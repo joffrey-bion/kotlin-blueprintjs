@@ -38,6 +38,9 @@ external interface IDialogProps : IOverlayableProps, IBackdropProps, IProps {
      * name here will require defining new CSS transition properties.
      */
     var transitionName: String?
+
+    // TODO aria-labelledby and aria-describedby cannot be added here due Kotlin/JS limitation
+    //   https://youtrack.jetbrains.com/issue/KT-31799
 }
 
 external class Dialog : AbstractPureComponent2<IDialogProps, State> {

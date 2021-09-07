@@ -5,6 +5,11 @@ package blueprintjs.core
 import react.State
 import react.ReactElement
 
+external object IconSize {
+    val STANDARD: Int = definedExternally
+    val LARGE: Int = definedExternally
+}
+
 external interface IIconProps : IIntentProps, IProps {
     /**
      * Color of icon. This is used as the `fill` attribute on the `<svg>` image
@@ -25,8 +30,7 @@ external interface IIconProps : IIntentProps, IProps {
      * required because it determines the content of the component, but it can
      * be explicitly set to falsy values to render nothing.
      *
-     * - If `null` or `undefined` or `false`, this component will render
-     *   nothing.
+     * - If `null` or `undefined` or `false`, this component will render nothing.
      * - If given an `IconName` (a string literal union of all icon names), that
      *   icon will be rendered as an `<svg>` with `<path>` tags. Unknown strings
      *   will render a blank icon to occupy space.
@@ -38,12 +42,16 @@ external interface IIconProps : IIntentProps, IProps {
      */
     var icon: dynamic /* IconName | MaybeElement */
 
+    @Deprecated("Use size instead", ReplaceWith("size"))
+    var iconSize: Int?
+
     /**
      * Size of the icon, in pixels. Blueprint contains 16px and 20px SVG icon
      * images, and chooses the appropriate resolution based on this prop.
-     * @default Icon.SIZE_STANDARD = 16
+     *
+     * Defaults to [IconSize.STANDARD]
      */
-    var iconSize: Int?
+    var size: Int?
 
     /** CSS style properties. */
     // var style: CSSProperties? // TODO
@@ -57,8 +65,12 @@ external interface IIconProps : IIntentProps, IProps {
     /**
      * Description string. This string does not appear in normal browsers, but
      * it increases accessibility. For instance, screen readers will use it for
-     * aural feedback. By default, this is set to the icon's name. Pass an
-     * explicit falsy value to disable.
+     * aural feedback.
+     *
+     * If this value is nullish, `false`, or an empty string, the component will assume
+     * that the icon is decorative and `aria-hidden="true"` will be applied.
+     *
+     * @see https://www.w3.org/WAI/tutorials/images/decorative/
      */
     var title: String?
 }
@@ -68,7 +80,9 @@ external class Icon : AbstractPureComponent2<IIconProps, State> {
     override fun render(): ReactElement?
 
     companion object {
+        @Deprecated("Moved to IconSize", ReplaceWith("IconSize.STANDARD"))
         val SIZE_STANDARD: Int = definedExternally
+        @Deprecated("Moved to IconSize", ReplaceWith("IconSize.LARGE"))
         val SIZE_LARGE: Int = definedExternally
     }
 }

@@ -7,5 +7,5 @@ reactRouterDom = "5.2.0"
 redux = "4.1.1"
 styledComponents = "5.3.1"
 
-blueprintjs-core = "3.42.0"
+blueprintjs-core = "3.49.1"
 blueprintjs-icons = "3.29.0"

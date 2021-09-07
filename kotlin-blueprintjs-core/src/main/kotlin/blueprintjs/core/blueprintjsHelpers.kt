@@ -11,7 +11,7 @@ import react.dom.h2
 
 fun RBuilder.bpIcon(
     name: IconName,
-    size: Int = Icon.SIZE_STANDARD,
+    size: Int = IconSize.STANDARD,
     intent: Intent = Intent.NONE,
     title: String? = null,
     alt: String? = null,
@@ -20,7 +20,7 @@ fun RBuilder.bpIcon(
 ): Unit = child(Icon::class) {
     attrs {
         this.icon = name
-        this.iconSize = size
+        this.size = size
         this.htmlTitle = title
         this.intent = intent
         this.title = alt
