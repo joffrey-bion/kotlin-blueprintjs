@@ -32,7 +32,7 @@ external interface IDialogProps : IOverlayableProps, IBackdropProps, IProps {
      * Title of the dialog. If provided, an element with `Classes.DIALOG_HEADER`
      * will be rendered inside the dialog before any children elements.
      */
-    var title: ReactElement?
+    var title: ReactElement<*>?
     /**
      * Name of the transition for internal `CSSTransition`. Providing your own
      * name here will require defining new CSS transition properties.
@@ -44,5 +44,5 @@ external interface IDialogProps : IOverlayableProps, IBackdropProps, IProps {
 }
 
 external class Dialog : AbstractPureComponent2<IDialogProps, State> {
-    override fun render(): ReactElement
+    override fun render(): ReactElement<IDialogProps>
 }

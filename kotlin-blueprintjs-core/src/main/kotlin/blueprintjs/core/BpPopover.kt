@@ -243,5 +243,5 @@ external interface IPopoverState : State {
 
 @Deprecated("Use Popover2", ReplaceWith("Popover2"))
 open external class Popover : AbstractPureComponent2<IPopoverProps, IPopoverState> {
-    override fun render(): ReactElement
+    override fun render(): ReactElement<IPopoverProps>
 }

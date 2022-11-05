@@ -77,7 +77,7 @@ external interface IIconProps : IIntentProps, IProps {
 
 external class Icon : AbstractPureComponent2<IIconProps, State> {
 
-    override fun render(): ReactElement?
+    override fun render(): ReactElement<IIconProps>
 
     companion object {
         @Deprecated("Moved to IconSize", ReplaceWith("IconSize.STANDARD"))

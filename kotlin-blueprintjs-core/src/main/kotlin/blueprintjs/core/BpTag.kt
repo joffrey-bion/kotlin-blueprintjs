@@ -81,5 +81,5 @@ external interface ITagProps : IProps, IIntentProps {
 }
 
 external class Tag : AbstractPureComponent2<ITagProps, State> {
-    override fun render(): ReactElement
+    override fun render(): ReactElement<ITagProps>
 }

@@ -14,8 +14,10 @@ kotlin {
     sourceSets {
         main {
             dependencies {
-                implementation(libs.kotlin.wrappers.react.base)
-                implementation(libs.kotlin.wrappers.react.dom)
+                api(project.dependencies.enforcedPlatform(libs.kotlin.wrappers.bom))
+                api(libs.kotlin.wrappers.react.base)
+                api(libs.kotlin.wrappers.react.legacy)
+                api(libs.kotlin.wrappers.react.dom)
 
                 api(npm("@blueprintjs/core", bpCoreVersion))
             }

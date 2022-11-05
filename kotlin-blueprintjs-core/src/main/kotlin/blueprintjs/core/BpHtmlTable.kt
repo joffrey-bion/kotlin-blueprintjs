@@ -25,5 +25,5 @@ external interface IHTMLTableProps : IProps, IElementRefProps<HTMLTableElement> 
 }
 
 open external class HTMLTable : AbstractPureComponent2<IHTMLTableProps, State> {
-    override fun render(): ReactElement
+    override fun render(): ReactElement<IHTMLTableProps>
 }

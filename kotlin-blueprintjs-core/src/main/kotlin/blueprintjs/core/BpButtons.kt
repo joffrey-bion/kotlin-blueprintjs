@@ -72,9 +72,9 @@ abstract external class AbstractButton<E : HTMLElement /* HTMLButtonElement | HT
     AbstractPureComponent2<IButtonProps<E>, IButtonState>
 
 external class Button : AbstractButton<HTMLButtonElement> {
-    override fun render(): ReactElement
+    override fun render(): ReactElement<IButtonProps<HTMLButtonElement>>
 }
 
 external class AnchorButton : AbstractButton<HTMLAnchorElement> {
-    override fun render(): ReactElement
+    override fun render(): ReactElement<IButtonProps<HTMLAnchorElement>>
 }

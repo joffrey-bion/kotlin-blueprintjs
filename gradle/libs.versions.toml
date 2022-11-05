@@ -1,8 +1,10 @@
 [versions]
-kotlin-react = "17.0.2-pre.242-kotlin-1.5.30"
+kotlin-wrappers = "1.0.0-pre.427"
 blueprintjs-core = "3.49.1"
 blueprintjs-icons = "3.29.0"
 
 [libraries]
-kotlin-wrappers-react-base = { module = "org.jetbrains.kotlin-wrappers:kotlin-react", version.ref = "kotlin-react" }
-kotlin-wrappers-react-dom = { module = "org.jetbrains.kotlin-wrappers:kotlin-react-dom", version.ref = "kotlin-react" }
+kotlin-wrappers-bom = { module = "org.jetbrains.kotlin-wrappers:kotlin-wrappers-bom", version.ref = "kotlin-wrappers" }
+kotlin-wrappers-react-base = { module = "org.jetbrains.kotlin-wrappers:kotlin-react" }
+kotlin-wrappers-react-legacy = { module = "org.jetbrains.kotlin-wrappers:kotlin-react-legacy" }
+kotlin-wrappers-react-dom = { module = "org.jetbrains.kotlin-wrappers:kotlin-react-dom-legacy" }

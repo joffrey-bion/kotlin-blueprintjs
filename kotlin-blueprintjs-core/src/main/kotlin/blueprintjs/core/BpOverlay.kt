@@ -155,5 +155,5 @@ external interface IOverlayState : State {
 }
 
 external class Overlay : AbstractPureComponent2<IOverlayProps, IOverlayState> {
-    override fun render(): ReactElement
+    override fun render(): ReactElement<IOverlayProps>
 }

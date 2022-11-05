@@ -32,5 +32,5 @@ external interface ICalloutProps : IIntentProps, IProps, HTMLDivProps {
 }
 
 open external class Callout : AbstractPureComponent2<ICalloutProps, State> {
-    override fun render(): ReactElement
+    override fun render(): ReactElement<ICalloutProps>
 }

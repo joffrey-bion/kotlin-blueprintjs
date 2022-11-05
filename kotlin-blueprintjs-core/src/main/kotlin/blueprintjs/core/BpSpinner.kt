@@ -33,7 +33,7 @@ external interface ISpinnerProps : IProps, IIntentProps {
 }
 
 external class Spinner : AbstractPureComponent2<ISpinnerProps, State> {
-    override fun render(): ReactElement
+    override fun render(): ReactElement<ISpinnerProps>
 
     companion object {
         val SIZE_SMALL: Int = definedExternally

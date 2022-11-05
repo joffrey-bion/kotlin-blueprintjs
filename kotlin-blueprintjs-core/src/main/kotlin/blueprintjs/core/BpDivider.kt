@@ -15,5 +15,5 @@ external interface IDividerProps : IProps {
 }
 
 open external class Divider : AbstractPureComponent2<IDividerProps, State> {
-    override fun render(): ReactElement
+    override fun render(): ReactElement<IDividerProps>
 }

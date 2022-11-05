@@ -13,7 +13,7 @@ typealias IconName = String
  *
  * In React, `boolean`, `null`, and `undefined` do not produce any output.
  */
-typealias MaybeElement = ReactElement?
+typealias MaybeElement = ReactElement<*>?
 
 typealias IRef<T> = Any /* IRefObject<T> | IRefCallback<T> */
 

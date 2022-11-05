@@ -40,5 +40,5 @@ external interface IButtonGroupProps : IProps, HTMLDivProps {
 }
 
 external class ButtonGroup : AbstractPureComponent2<IButtonGroupProps, State> {
-    override fun render(): ReactElement?
+    override fun render(): ReactElement<IButtonGroupProps>
 }

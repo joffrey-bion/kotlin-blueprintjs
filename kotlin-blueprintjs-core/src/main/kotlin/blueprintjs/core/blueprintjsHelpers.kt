@@ -3,10 +3,7 @@ package blueprintjs.core
 import org.w3c.dom.HTMLButtonElement
 import org.w3c.dom.events.Event
 import org.w3c.dom.events.MouseEvent
-import react.RBuilder
-import react.RHandler
-import react.ReactElement
-import react.buildElement
+import react.*
 import react.dom.h2
 
 fun RBuilder.bpIcon(
@@ -70,7 +67,7 @@ fun RBuilder.bpButtonGroup(
 fun RBuilder.bpInputGroup(
     large: Boolean = false,
     placeholder: String = "",
-    rightElement: ReactElement? = null,
+    rightElement: ReactElement<Props>? = null,
     value: String? = null,
     onChange: (Event) -> Unit,
 ): Unit = child(InputGroup::class) {
@@ -137,9 +134,9 @@ fun RBuilder.bpSpinner(
 
 fun RBuilder.bpNonIdealState(
     icon: IconName? = null,
-    title: ReactElement? = null,
-    description: ReactElement? = null,
-    action: ReactElement? = null,
+    title: ReactElement<*>? = null,
+    description: ReactElement<*>? = null,
+    action: ReactElement<*>? = null,
     block: RHandler<INonIdealStateProps> = {},
 ) = child(NonIdealState::class) {
     attrs {
@@ -154,8 +151,8 @@ fun RBuilder.bpNonIdealState(
 fun RBuilder.bpNonIdealState(
     icon: IconName? = null,
     title: String,
-    description: ReactElement? = null,
-    action: ReactElement? = null,
+    description: ReactElement<*>? = null,
+    action: ReactElement<*>? = null,
     block: RHandler<INonIdealStateProps> = {},
 ): Unit = bpNonIdealState(icon, buildElement { h2 { +title } }, description, action, block)
 
@@ -185,8 +182,8 @@ fun RBuilder.bpOverlay(
 
 fun RBuilder.bpDialog(
     isOpen: Boolean,
-    title: ReactElement? = null,
-    icon: ReactElement? = null,
+    title: ReactElement<*>? = null,
+    icon: ReactElement<*>? = null,
     autoFocus: Boolean = true,
     enforceFocus: Boolean = true,
     usePortal: Boolean = true,
@@ -253,7 +250,7 @@ fun RBuilder.bpDialog(
 )
 
 fun RBuilder.bpPopover(
-    content: ReactElement,
+    content: ReactElement<Props>,
     hoverOpenDelay: Number? = null,
     hoverCloseDelay: Number? = null,
     position: PopoverPosition = PopoverPosition.AUTO,

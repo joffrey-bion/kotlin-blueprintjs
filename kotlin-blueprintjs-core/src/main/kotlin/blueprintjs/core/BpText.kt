@@ -31,5 +31,5 @@ external interface ITextState : State {
 }
 
 external class Text : AbstractPureComponent2<ITextProps, ITextState> {
-    override fun render(): ReactElement
+    override fun render(): ReactElement<ITextProps>
 }

@@ -37,5 +37,5 @@ external interface IHTMLSelectProps : IProps {
 }
 
 open external class HTMLSelect : AbstractPureComponent2<IHTMLSelectProps, State> {
-    override fun render(): ReactElement
+    override fun render(): ReactElement<IHTMLSelectProps>
 }

@@ -3,7 +3,6 @@
 package blueprintjs.core
 
 import org.w3c.dom.HTMLInputElement
-import react.PureComponent
 import react.State
 import react.ReactElement
 
@@ -38,7 +37,7 @@ external interface IInputGroupProps : IControlledProps, IIntentProps, IProps {
      * Element to render on the left side of input.  This prop is mutually exclusive
      * with `leftIcon`.
      */
-    var leftElement: ReactElement?
+    var leftElement: ReactElement<*>?
 
     /**
      * Name of a Blueprint UI icon to render on the left side of the input group,
@@ -60,7 +59,7 @@ external interface IInputGroupProps : IControlledProps, IIntentProps, IProps {
      * Element to render on right side of input.
      * For best results, use a minimal button, tag, or small spinner.
      */
-    var rightElement: ReactElement?
+    var rightElement: ReactElement<*>?
 
     /** Whether the input (and any buttons) should appear with rounded caps. */
     var round: Boolean?
@@ -102,7 +101,7 @@ external interface IInputGroupProps2 : HTMLInputProps, IControlledProps2, IInten
      * Element to render on the left side of input.  This prop is mutually exclusive
      * with `leftIcon`.
      */
-    var leftElement: ReactElement?
+    var leftElement: ReactElement<*>?
 
     /**
      * Name of a Blueprint UI icon to render on the left side of the input group,
@@ -124,7 +123,7 @@ external interface IInputGroupProps2 : HTMLInputProps, IControlledProps2, IInten
      * Element to render on right side of input.
      * For best results, use a minimal button, tag, or small spinner.
      */
-    var rightElement: ReactElement?
+    var rightElement: ReactElement<*>?
 
     /** Whether the input (and any buttons) should appear with rounded caps. */
     var round: Boolean?
@@ -142,5 +141,5 @@ external interface IInputGroupState : State {
 }
 
 external class InputGroup : AbstractPureComponent2<IInputGroupProps2, IInputGroupState> {
-    override fun render(): ReactElement
+    override fun render(): ReactElement<IInputGroupProps2>
 }

@@ -36,5 +36,5 @@ external interface ICardProps : IProps {
 }
 
 open external class Card : AbstractPureComponent2<ICardProps, State> {
-    override fun render(): ReactElement
+    override fun render(): ReactElement<ICardProps>
 }
