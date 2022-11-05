@@ -4,7 +4,7 @@ plugins {
     signing
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
     id("org.jetbrains.dokka") version "1.5.0"
-    id("org.hildan.github.changelog") version "1.8.0"
+    id("org.hildan.github.changelog") version "1.12.1"
 }
 
 description = "Kotlin wrappers for the BlueprintJS react library"
