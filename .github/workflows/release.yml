@@ -12,29 +12,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Set up JDK 15
-        uses: actions/setup-java@v1.4.3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          java-version: 15
+          distribution: 'temurin'
+          java-version: 17
 
       - name: Test build before release
-        uses: burrunan/gradle-cache-action@v1
+        uses: gradle/gradle-build-action@v2
         with:
-          job-id: jdk15
           arguments: build
 
       - name: Generate Change Log
-        uses: burrunan/gradle-cache-action@v1
+        uses: gradle/gradle-build-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          job-id: jdk15
-          # We already deal with caches in a previous gradle-cache-action
-          execution-only-caches: true
-          arguments: generateChangelog
-          properties: version=${{ github.event.inputs.version }}
+          arguments: generateChangelog -Pversion=${{ inputs.version }}
 
       - name: Commit and Push Change Log
         id: changelog-commit
@@ -42,15 +38,14 @@ jobs:
           git config user.name '${{ github.actor }}'
           git config user.email '${{ github.actor }}@users.noreply.github.com'
           git add CHANGELOG.md
-          git commit -m "Version ${{ github.event.inputs.version }}"
+          git commit -m "Version ${{ inputs.version }}"
           git push
-          echo "::set-output name=sha::$(git rev-parse HEAD)"
+          echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
 
       - name: Create Release and Tag
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }} # using personal token to trigger publish workflow
+        uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.event.inputs.version }}
-          release_name: ${{ github.event.inputs.version }}
-          commitish: ${{ steps.changelog-commit.outputs.sha }}
+          token: ${{ secrets.GH_PAT }} # using personal token to trigger publish workflow
+          tag_name: ${{ inputs.version }}
+          target_commitish: ${{ steps.changelog-commit.outputs.sha }}
+          body_path: build/reports/changelog/latest-release-body.md
