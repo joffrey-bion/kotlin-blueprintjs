@@ -14,9 +14,6 @@ kotlin {
     sourceSets {
         main {
             dependencies {
-                implementation(libs.kotlin.wrappers.react.base)
-                implementation(libs.kotlin.wrappers.react.dom)
-
                 api(npm("@blueprintjs/icons", bpIconsVersion))
             }
         }
