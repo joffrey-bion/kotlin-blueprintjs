@@ -2,7 +2,7 @@ plugins {
     kotlin("js") version "1.5.30" apply false
     `maven-publish`
     signing
-    id("io.github.gradle-nexus.publish-plugin") version "1.0.0"
+    id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
     id("org.jetbrains.dokka") version "1.5.0"
     id("org.hildan.github.changelog") version "1.8.0"
 }
