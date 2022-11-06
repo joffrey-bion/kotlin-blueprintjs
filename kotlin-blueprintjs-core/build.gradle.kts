@@ -14,7 +14,7 @@ kotlin {
     sourceSets {
         main {
             dependencies {
-                api(project.dependencies.enforcedPlatform(libs.kotlin.wrappers.bom))
+                api(project.dependencies.platform(libs.kotlin.wrappers.bom))
                 api(libs.kotlin.wrappers.react.base)
                 api(libs.kotlin.wrappers.react.legacy)
                 api(libs.kotlin.wrappers.react.dom)
