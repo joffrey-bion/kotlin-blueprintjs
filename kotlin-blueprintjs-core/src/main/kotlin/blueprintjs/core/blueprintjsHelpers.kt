@@ -67,7 +67,7 @@ fun RBuilder.bpButtonGroup(
 fun RBuilder.bpInputGroup(
     large: Boolean = false,
     placeholder: String = "",
-    rightElement: ReactElement<Props>? = null,
+    rightElement: ReactElement<*>? = null,
     value: String? = null,
     onChange: (Event) -> Unit,
 ): Unit = child(InputGroup::class) {
@@ -250,7 +250,7 @@ fun RBuilder.bpDialog(
 )
 
 fun RBuilder.bpPopover(
-    content: ReactElement<Props>,
+    content: ReactElement<*>,
     hoverOpenDelay: Number? = null,
     hoverCloseDelay: Number? = null,
     position: PopoverPosition = PopoverPosition.AUTO,
