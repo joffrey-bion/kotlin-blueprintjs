@@ -1,5 +1,14 @@
 # Change Log
 
+## [5](https://github.com/joffrey-bion/kotlin-blueprintjs/tree/5) (2022-11-06)
+[View commits](https://github.com/joffrey-bion/kotlin-blueprintjs/compare/4...5)
+
+**Upgraded dependencies:**
+
+- Use kotlin\-wrapper BOM 1.0.0 to align dependencies [\#10](https://github.com/joffrey-bion/kotlin-blueprintjs/issues/10)
+- Upgrade react wrappers to 18.2.0\-pre.427 [\#9](https://github.com/joffrey-bion/kotlin-blueprintjs/issues/9)
+- Upgrade Kotlin to 1.7.20 [\#8](https://github.com/joffrey-bion/kotlin-blueprintjs/issues/8)
+
 ## [4](https://github.com/joffrey-bion/kotlin-blueprintjs/tree/4) (2021-09-07)
 [View commits](https://github.com/joffrey-bion/kotlin-blueprintjs/compare/3...4)
 
@@ -27,7 +36,7 @@
 - Upgrade to Kotlin 1.5.30 [\#3](https://github.com/joffrey-bion/kotlin-blueprintjs/issues/3)
 
 ## [1](https://github.com/joffrey-bion/kotlin-blueprintjs/tree/1) (2021-04-04)
-[View commits](https://github.com/joffrey-bion/kotlin-blueprintjs/compare/76ae54225eb51d4f1dd2d09eb0a8aac10b8cb919...1)
+[View commits](https://github.com/joffrey-bion/kotlin-blueprintjs/compare/e3858c4f266d4560f13b32b137e8497410f75ab0...1)
 
 **Implemented enhancements:**
 
