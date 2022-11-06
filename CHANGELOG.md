@@ -1,5 +1,12 @@
 # Change Log
 
+## [6](https://github.com/joffrey-bion/kotlin-blueprintjs/tree/6) (2022-11-06)
+[View commits](https://github.com/joffrey-bion/kotlin-blueprintjs/compare/5...6)
+
+**Fixed bugs:**
+
+- `bpInputGroup` and `bpPopover` have some unusable inputs of type `ReactElement\<Props\>` [\#11](https://github.com/joffrey-bion/kotlin-blueprintjs/issues/11)
+
 ## [5](https://github.com/joffrey-bion/kotlin-blueprintjs/tree/5) (2022-11-06)
 [View commits](https://github.com/joffrey-bion/kotlin-blueprintjs/compare/4...5)
 
