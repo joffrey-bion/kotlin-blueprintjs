@@ -2,11 +2,10 @@
 
 package blueprintjs.core
 
-import org.w3c.dom.HTMLDivElement
-import org.w3c.dom.events.Event
-import react.PropsWithChildren
-import react.State
-import react.ReactElement
+import react.*
+import react.dom.events.SyntheticEvent
+import react.dom.html.HTMLAttributes
+import web.html.*
 
 external enum class PopoverInteractionKind {
     CLICK,
@@ -33,7 +32,7 @@ external enum class PopoverPosition {
     TOP_RIGHT
 }
 
-external interface IPopoverSharedProps : IOverlayableProps, IProps {
+external interface PopoverSharedProps : OverlayableProps, PropsWithClassName, PropsWithChildren {
     /**
      * Determines the boundary element used by Popper for its `flip` and
      * `preventOverflow` modifiers. Three shorthand keywords are supported;
@@ -70,7 +69,7 @@ external interface IPopoverSharedProps : IOverlayableProps, IProps {
      *
      * @default 300
      */
-    var hoverCloseDelay: Number?
+    var hoverCloseDelay: Long?
     /**
      * The amount of time in milliseconds the popover should wait before opening
      * after the user hovers over the trigger. The timer is canceled if the user
@@ -78,7 +77,7 @@ external interface IPopoverSharedProps : IOverlayableProps, IProps {
      *
      * @default 150
      */
-    var hoverOpenDelay: Number?
+    var hoverOpenDelay: Long?
     /**
      * Whether a popover that uses a `Portal` should automatically inherit the
      * dark theme from its parent.
@@ -112,7 +111,7 @@ external interface IPopoverSharedProps : IOverlayableProps, IProps {
      * Callback invoked in controlled mode when the popover open state *would*
      * change due to user interaction.
      */
-    var onInteraction: ((nextOpenState: Boolean, e: Event?) -> Unit)?
+    var onInteraction: ((nextOpenState: Boolean, e: SyntheticEvent<HTMLElement, *>?) -> Unit)?
     /**
      * Whether the popover should open when its target is focused. If `true`,
      * target will render with `tabindex="0"` to make it focusable via keyboard
@@ -156,7 +155,7 @@ external interface IPopoverSharedProps : IOverlayableProps, IProps {
      * HTML props to spread to target element. Use `targetTagName` to change
      * the type of element rendered. Note that `ref` is not supported.
      */
-    var targetProps: PropsWithChildren? // React.HTMLAttributes<HTMLElement>
+    var targetProps: HTMLAttributes<HTMLElement>?
     /**
      * HTML tag name for the target element. This must be an HTML element to
      * ensure that it supports the necessary DOM event handlers.
@@ -192,7 +191,7 @@ external interface IPopoverSharedProps : IOverlayableProps, IProps {
     var wrapperTagName: String? // keyof JSX.IntrinsicElements
 }
 
-external interface IPopoverProps : IPopoverSharedProps {
+external interface IPopoverProps : PopoverSharedProps {
     /** HTML props for the backdrop element. Can be combined with `backdropClassName`. */
     var backdropProps: PropsWithChildren? /* React.HTMLProps<HTMLDivElement>; */
 
@@ -200,7 +199,7 @@ external interface IPopoverProps : IPopoverSharedProps {
      * The content displayed inside the popover. This can instead be provided as
      * the _second_ element in `children` (first is `target`).
      */
-    var content: dynamic /* String? | JSX.Element? */
+    var content: Any? /* String? | JSX.Element? */
     /**
      * Whether the wrapper and target should take up the full width of their container.
      * Note that supplying `true` for this prop will force  `targetTagName="div"` and
@@ -224,15 +223,28 @@ external interface IPopoverProps : IPopoverSharedProps {
      */
     var hasBackdrop: Boolean?
     /**
+     * Whether the application should return focus to the last active element in the
+     * document after this popover closes.
+     *
+     * This is automatically set to `false` if this is a hover interaction popover.
+     *
+     * If you are attaching a popover _and_ a tooltip to the same target, you must take
+     * care to either disable this prop for the popover _or_ disable the tooltip's
+     * `openOnTargetFocus` prop.
+     *
+     * @default false
+     */
+    var shouldReturnFocusOnClose: Boolean?
+    /**
      * Ref supplied to the `Classes.POPOVER` element.
      */
-    var popoverRef: ((ref: HTMLDivElement?) -> Unit)?
+    var popoverRef: Ref<HTMLDivElement>?
 
     /**
      * The target to which the popover content is attached. This can instead be
      * provided as the _first_ element in `children`.
      */
-    var target: dynamic /* String? | JSX.Element? */
+    var target: Any? /* String? | JSX.Element? */
 }
 
 external interface IPopoverState : State {

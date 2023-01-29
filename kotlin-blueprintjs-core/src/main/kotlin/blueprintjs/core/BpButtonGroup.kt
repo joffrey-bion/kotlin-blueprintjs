@@ -2,10 +2,11 @@
 
 package blueprintjs.core
 
+import react.PropsWithClassName
 import react.State
 import react.ReactElement
 
-external interface IButtonGroupProps : IProps, HTMLDivProps {
+external interface ButtonGroupProps : PropsWithClassName, HTMLDivProps {
     /**
      * Text alignment within button. By default, icons and text will be centered
      * within the button. Passing `"left"` or `"right"` will align the button
@@ -39,6 +40,11 @@ external interface IButtonGroupProps : IProps, HTMLDivProps {
     var vertical: Boolean?
 }
 
-external class ButtonGroup : AbstractPureComponent2<IButtonGroupProps, State> {
-    override fun render(): ReactElement<IButtonGroupProps>
+/**
+ * Button group component.
+ *
+ * https://blueprintjs.com/docs/#core/components/button-group
+ */
+external class ButtonGroup : AbstractPureComponent2<ButtonGroupProps, State> {
+    override fun render(): ReactElement<ButtonGroupProps>
 }

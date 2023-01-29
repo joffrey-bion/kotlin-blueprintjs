@@ -1,10 +1,16 @@
 package blueprintjs.core
 
-import org.w3c.dom.HTMLButtonElement
-import org.w3c.dom.events.Event
-import org.w3c.dom.events.MouseEvent
-import react.*
+import csstype.ClassName
+import react.RBuilder
+import react.RHandler
+import react.ReactElement
+import react.buildElement
+import react.dom.events.ChangeEventHandler
+import react.dom.events.MouseEventHandler
 import react.dom.h2
+import web.html.HTMLButtonElement
+import web.html.HTMLElement
+import web.html.HTMLInputElement
 
 fun RBuilder.bpIcon(
     name: IconName,
@@ -12,8 +18,8 @@ fun RBuilder.bpIcon(
     intent: Intent = Intent.NONE,
     title: String? = null,
     alt: String? = null,
-    className: String? = null,
-    block: RHandler<IIconProps> = {},
+    className: ClassName? = null,
+    block: RHandler<IconProps> = {},
 ): Unit = child(Icon::class) {
     attrs {
         this.icon = name
@@ -35,8 +41,8 @@ fun RBuilder.bpButton(
     icon: IconName? = null,
     rightIcon: IconName? = null,
     intent: Intent = Intent.NONE,
-    onClick: ((event: MouseEvent) -> Unit)? = {},
-    block: RHandler<IButtonProps<HTMLButtonElement>> = {},
+    onClick: MouseEventHandler<HTMLElement>? = null,
+    block: RHandler<ButtonProps<HTMLButtonElement>> = {},
 ): Unit = child(Button::class) {
     attrs {
         this.title = title
@@ -55,7 +61,7 @@ fun RBuilder.bpButton(
 fun RBuilder.bpButtonGroup(
     large: Boolean = false,
     minimal: Boolean = false,
-    block: RHandler<IButtonGroupProps> = {},
+    block: RHandler<ButtonGroupProps> = {},
 ): Unit = child(ButtonGroup::class) {
     attrs {
         this.large = large
@@ -69,7 +75,7 @@ fun RBuilder.bpInputGroup(
     placeholder: String = "",
     rightElement: ReactElement<*>? = null,
     value: String? = null,
-    onChange: (Event) -> Unit,
+    onChange: ChangeEventHandler<HTMLInputElement>,
 ): Unit = child(InputGroup::class) {
     attrs {
         this.large = large
@@ -88,8 +94,8 @@ fun RBuilder.bpTag(
     fill: Boolean? = null,
     active: Boolean? = null,
     icon: String? = null,
-    className: String? = null,
-    block: RHandler<ITagProps> = {},
+    className: ClassName? = null,
+    block: RHandler<TagProps> = {},
 ): Unit = child(Tag::class) {
     attrs {
         intent?.let { this.intent = it }
@@ -107,7 +113,7 @@ fun RBuilder.bpTag(
 fun RBuilder.bpText(
     ellipsize: Boolean? = null,
     tagName: String? = null,
-    block: RHandler<ITextProps> = {},
+    block: RHandler<TextProps> = {},
 ): Unit = child(Text::class) {
     attrs {
         ellipsize?.let { this.ellipsize = it }
@@ -121,7 +127,7 @@ fun RBuilder.bpSpinner(
     value: Double? = null,
     intent: Intent? = null,
     tagName: String? = null,
-    block: RHandler<ISpinnerProps> = {},
+    block: RHandler<SpinnerProps> = {},
 ): Unit = child(Spinner::class) {
     attrs {
         size?.let { this.size = it }
@@ -137,7 +143,7 @@ fun RBuilder.bpNonIdealState(
     title: ReactElement<*>? = null,
     description: ReactElement<*>? = null,
     action: ReactElement<*>? = null,
-    block: RHandler<INonIdealStateProps> = {},
+    block: RHandler<NonIdealStateProps> = {},
 ) = child(NonIdealState::class) {
     attrs {
         icon?.let { this.icon = it }
@@ -153,7 +159,7 @@ fun RBuilder.bpNonIdealState(
     title: String,
     description: ReactElement<*>? = null,
     action: ReactElement<*>? = null,
-    block: RHandler<INonIdealStateProps> = {},
+    block: RHandler<NonIdealStateProps> = {},
 ): Unit = bpNonIdealState(icon, buildElement { h2 { +title } }, description, action, block)
 
 fun RBuilder.bpOverlay(
@@ -165,7 +171,7 @@ fun RBuilder.bpOverlay(
     canEscapeKeyClose: Boolean = true,
     canOutsideClickClose: Boolean = true,
     onClose: () -> Unit = {},
-    block: RHandler<IOverlayProps> = {},
+    block: RHandler<OverlayProps> = {},
 ): Unit = child(Overlay::class) {
     attrs {
         this.isOpen = isOpen
@@ -193,7 +199,7 @@ fun RBuilder.bpDialog(
     isCloseButtonShown: Boolean = true,
     transitionName: String? = null,
     onClose: () -> Unit = {},
-    block: RHandler<IDialogProps> = {},
+    block: RHandler<DialogProps> = {},
 ): Unit = child(Dialog::class) {
     attrs {
         this.isOpen = isOpen
@@ -232,7 +238,7 @@ fun RBuilder.bpDialog(
     isCloseButtonShown: Boolean = true,
     transitionName: String? = null,
     onClose: () -> Unit = {},
-    block: RHandler<IDialogProps> = {},
+    block: RHandler<DialogProps> = {},
 ): Unit = bpDialog(
     isOpen = isOpen,
     title = title?.let { buildElement { +title } },
@@ -251,13 +257,13 @@ fun RBuilder.bpDialog(
 
 fun RBuilder.bpPopover(
     content: ReactElement<*>,
-    hoverOpenDelay: Number? = null,
-    hoverCloseDelay: Number? = null,
+    hoverOpenDelay: Long? = null,
+    hoverCloseDelay: Long? = null,
     position: PopoverPosition = PopoverPosition.AUTO,
     interactionKind: PopoverInteractionKind = PopoverInteractionKind.HOVER,
     minimal: Boolean = false,
     canEscapeKeyClose: Boolean = true,
-    className: String? = null,
+    className: ClassName? = null,
     popoverClassName: String? = null,
     portalClassName: String? = null,
     onClose: () -> Unit = {},
@@ -283,7 +289,7 @@ fun RBuilder.bpCallout(
     intent: Intent? = Intent.NONE,
     icon: IconName? = null,
     title: String? = null,
-    block: RHandler<ICalloutProps> = {},
+    block: RHandler<CalloutProps> = {},
 ): Unit = child(Callout::class) {
     attrs {
         if (icon != null) {
@@ -298,9 +304,9 @@ fun RBuilder.bpCallout(
 fun RBuilder.bpCard(
     elevation: Elevation = Elevation.ZERO,
     interactive: Boolean = false,
-    className: String? = null,
+    className: ClassName? = null,
     onClick: () -> Unit = {},
-    block: RHandler<ICardProps> = {},
+    block: RHandler<CardProps> = {},
 ): Unit = child(Card::class) {
     attrs {
         this.elevation = elevation
@@ -316,7 +322,7 @@ fun RBuilder.bpHtmlTable(
     interactive: Boolean = false,
     condensed: Boolean = false,
     striped: Boolean = false,
-    block: RHandler<IHTMLTableProps> = {},
+    block: RHandler<HTMLTableProps> = {},
 ): Unit = child(HTMLTable::class) {
     attrs {
         this.bordered = bordered

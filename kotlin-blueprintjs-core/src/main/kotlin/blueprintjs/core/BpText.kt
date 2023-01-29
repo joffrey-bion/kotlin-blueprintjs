@@ -2,10 +2,12 @@
 
 package blueprintjs.core
 
+import react.PropsWithChildren
+import react.PropsWithClassName
 import react.State
 import react.ReactElement
 
-external interface ITextProps : IProps {
+external interface TextProps : PropsWithClassName, PropsWithChildren {
     /**
      * Indicates that this component should be truncated with an ellipsis if it overflows its container.
      * The `title` attribute will also be added when content overflows to show the full text of the children on hover.
@@ -30,6 +32,6 @@ external interface ITextState : State {
     var isContentOverflowing: Boolean
 }
 
-external class Text : AbstractPureComponent2<ITextProps, ITextState> {
-    override fun render(): ReactElement<ITextProps>
+external class Text : AbstractPureComponent2<TextProps, ITextState> {
+    override fun render(): ReactElement<TextProps>
 }

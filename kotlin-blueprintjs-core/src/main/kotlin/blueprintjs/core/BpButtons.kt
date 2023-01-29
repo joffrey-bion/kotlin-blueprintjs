@@ -2,14 +2,18 @@
 
 package blueprintjs.core
 
-import org.w3c.dom.HTMLAnchorElement
-import org.w3c.dom.HTMLButtonElement
-import org.w3c.dom.HTMLElement
-import react.State
+import react.PropsWithChildren
 import react.ReactElement
+import react.State
+import web.html.HTMLAnchorElement
+import web.html.HTMLButtonElement
+import web.html.HTMLElement
 
-external interface IButtonProps<E : HTMLElement /* HTMLButtonElement | HTMLAnchorElement */> : IActionProps,
-    IElementRefProps<E> {
+external interface ButtonProps<E : HTMLElement /* HTMLButtonElement | HTMLAnchorElement */> :
+    ActionProps,
+    IElementRefProps<E>,
+    PropsWithChildren { // artificially added PropsWithChildren so ButtonProps can be used in AbstractPureComponent2
+
     // artificially added to allow title on button (should probably be on more general props)
     var title: String?
 
@@ -62,19 +66,29 @@ external interface IButtonProps<E : HTMLElement /* HTMLButtonElement | HTMLAncho
     var type: String? // "submit" | "reset" | "button";
 }
 
-// IAnchorButtonProps in typealiases
+// AnchorButtonProps in typealiases
 
 external interface IButtonState : State {
     var isActive: Boolean
 }
 
 abstract external class AbstractButton<E : HTMLElement /* HTMLButtonElement | HTMLAnchorElement */> :
-    AbstractPureComponent2<IButtonProps<E>, IButtonState>
+    AbstractPureComponent2<ButtonProps<E>, IButtonState>
 
+/**
+ * Button component.
+ *
+ * https://blueprintjs.com/docs/#core/components/button
+ */
 external class Button : AbstractButton<HTMLButtonElement> {
-    override fun render(): ReactElement<IButtonProps<HTMLButtonElement>>
+    override fun render(): ReactElement<ButtonProps<HTMLButtonElement>>
 }
 
+/**
+ * AnchorButton component.
+ *
+ * https://blueprintjs.com/docs/#core/components/button
+ */
 external class AnchorButton : AbstractButton<HTMLAnchorElement> {
-    override fun render(): ReactElement<IButtonProps<HTMLAnchorElement>>
+    override fun render(): ReactElement<ButtonProps<HTMLAnchorElement>>
 }

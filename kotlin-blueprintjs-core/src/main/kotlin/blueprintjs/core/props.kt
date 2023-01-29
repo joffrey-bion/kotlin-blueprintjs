@@ -2,45 +2,26 @@
 
 package blueprintjs.core
 
-import org.w3c.dom.HTMLElement
-import org.w3c.dom.events.Event
-import org.w3c.dom.events.MouseEvent
-import react.PropsWithChildren
+import csstype.ClassName
+import react.PropsWithClassName
+import react.Ref
+import react.dom.events.FormEventHandler
+import react.dom.events.MouseEventHandler
+import web.html.HTMLElement
+import kotlin.js.Json
 
-/**
- * Alias for all valid HTML props for `<div>` element.
- * Does not include React's `ref` or `key`.
- */
-// React.HTMLAttributes<HTMLDivElement>
-external interface HTMLDivProps {
-
-    // TODO add more attributes as needed
-}
-
-/**
- * Alias for all valid HTML props for `<input>` element.
- * Does not include React's `ref` or `key`.
- */
-// React.InputHTMLAttributes<HTMLInputElement>
-external interface HTMLInputProps {
-
-    /** Change event handler. Use `event.target.value` for new value. */
-    var onChange: ((Event) -> Unit)?
-
-    // TODO add more attributes as needed
-}
-
-// MaybeElement in typealiases
+external val DISPLAYNAME_PREFIX: String
 
 /**
  * A shared base interface for all Blueprint component props.
  */
-external interface IProps : PropsWithChildren {
+external interface IProps : PropsWithClassName {
+    // redeclared here because re-defined in TS with this doc.
     /** A space-delimited list of class names to pass along to a child element. */
-    var className: String?
+    override var className: ClassName?
 }
 
-external interface IIntentProps {
+external interface IntentProps {
     /** Visual intent color to apply to element. */
     var intent: Intent?
 }
@@ -49,22 +30,22 @@ external interface IIntentProps {
  * Interface for a clickable action, such as a button or menu item.
  * These props can be spready directly to a `<Button>` or `<MenuItem>` element.
  */
-external interface IActionProps : IIntentProps, IProps {
+external interface ActionProps : IntentProps, PropsWithClassName {
     /** Whether this action is non-interactive. */
     var disabled: Boolean?
 
     /** Name of a Blueprint UI icon (or an icon element) to render before the text. */
-    var icon: IconName?
+    var icon: IconName? // IconName | MaybeElement
 
     /** Click event handler. */
-    var onClick: ((event: MouseEvent) -> Unit)?
+    var onClick: MouseEventHandler<HTMLElement>?
 
     /** Action text. Can be any single React renderable. */
     var text: String?
 }
 
 /** Interface for a link, with support for customizing target window. */
-external interface ILinkProps {
+external interface LinkProps {
     /** Link URL. */
     var href: String?
 
@@ -73,45 +54,58 @@ external interface ILinkProps {
 }
 
 /** Interface for a controlled input. */
-@Deprecated("Use IControlledProps2", ReplaceWith("IControlledProps2"))
+@Deprecated("Use ControlledProps2", ReplaceWith("ControlledProps2"))
 external interface IControlledProps {
     /** Initial value of the input, for uncontrolled usage. */
     var defaultValue: String?
 
     /** Change event handler. Use `event.target.value` for new value. */
-    var onChange: ((Event) -> Unit)?
+    var onChange: FormEventHandler<HTMLElement>?
 
     /** Form value of the input, for controlled usage. */
     var value: String?
 }
 
 /** Interface for a controlled input. */
-external interface IControlledProps2 {
+external interface ControlledProps2 {
     /** Initial value of the input, for uncontrolled usage. */
-    var defaultValue: String?
+    var defaultValue: Any? // using Any? instead of String? to avoid conflict with react.dom.html.HTMLAttributes.defaultValue
 
     /** Form value of the input, for controlled usage. */
-    var value: String?
+    var value: Any? // using Any? instead of String? to avoid conflict with react.dom.html.HTMLAttributes.defaultValue
 }
 
 external interface IElementRefProps<E : HTMLElement> {
     /** A ref handler or a ref object that receives the native HTML element rendered by this component. */
-    var elementRef: IRef<E>
+    var elementRef: Ref<E>
 }
 
 /**
  * An interface for an option in a list, such as in a `<select>` or `RadioGroup`.
  * These props can be spread directly to an `<option>` or `<Radio>` element.
  */
-external interface IOptionProps : IProps {
+external interface OptionProps : IProps {
     /** Whether this option is non-interactive. */
     var disabled: Boolean?
 
     /** Label text for this option. If omitted, `value` is used as the label. */
     var label: String?
 
-    /** Value of this option. */
+    /** Value of this option (string or number). */
     var value: Any? // String | Number
 }
 
-// TODO fun removeNonHTMLProps
+/**
+ * Typically applied to HTMLElements to filter out disallowed props. When applied to a Component,
+ * can filter props from being passed down to the children. Can also filter by a combined list of
+ * supplied prop keys and the denylist (only appropriate for HTMLElements).
+ *
+ * @param props The original props object to filter down.
+ * @param {string[]} invalidProps If supplied, overwrites the default denylist.
+ * @param {boolean} shouldMerge If true, will merge supplied invalidProps and denylist together.
+ */
+external fun removeNonHTMLProps(
+    props: Json,
+    invalidProps: Array<String>? = definedExternally,
+    shouldMerge: Boolean? = definedExternally,
+): Json

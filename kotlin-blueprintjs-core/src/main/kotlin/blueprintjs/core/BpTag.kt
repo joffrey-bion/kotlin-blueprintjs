@@ -2,11 +2,15 @@
 
 package blueprintjs.core
 
-import org.w3c.dom.events.MouseEvent
-import react.State
+import react.PropsWithChildren
+import react.PropsWithClassName
 import react.ReactElement
+import react.State
+import react.dom.events.MouseEvent
+import web.html.HTMLButtonElement
+import web.html.HTMLDivElement
 
-external interface ITagProps : IProps, IIntentProps {
+external interface TagProps : PropsWithClassName, PropsWithChildren, IntentProps {
     /**
      * Whether the tag should appear in an active state.
      * @default false
@@ -20,7 +24,7 @@ external interface ITagProps : IProps, IIntentProps {
     var fill: Boolean?
 
     /** Name of a Blueprint UI icon (or an icon element) to render before the children. */
-    var icon: dynamic // IconName? | MaybeElement?
+    var icon: Any? // IconName? | MaybeElement?
 
     /**
      * Whether the tag should visually respond to user interactions. If set
@@ -57,16 +61,16 @@ external interface ITagProps : IProps, IIntentProps {
      * Callback invoked when the tag is clicked.
      * Recommended when `interactive` is `true`.
      */
-    var onClick: ((e: MouseEvent) -> Unit)?
+    var onClick: ((e: MouseEvent<HTMLDivElement, *>) -> Unit)?
 
     /**
      * Click handler for remove button.
      * The remove button will only be rendered if this prop is defined.
      */
-    var onRemove: ((e: MouseEvent, tagProps: ITagProps) -> Unit)?
+    var onRemove: ((e: MouseEvent<HTMLButtonElement, *>, tagProps: TagProps) -> Unit)?
 
     /** Name of a Blueprint UI icon (or an icon element) to render after the children. */
-    var rightIcon: dynamic // IconName? | MaybeElement?
+    var rightIcon: Any? // IconName? | MaybeElement?
 
     /**
      * Whether this tag should have rounded ends.
@@ -80,6 +84,11 @@ external interface ITagProps : IProps, IIntentProps {
     var htmlTitle: String?
 }
 
-external class Tag : AbstractPureComponent2<ITagProps, State> {
-    override fun render(): ReactElement<ITagProps>
+/**
+ * Tag component.
+ *
+ * https://blueprintjs.com/docs/#core/components/tag
+ */
+external class Tag : AbstractPureComponent2<TagProps, State> {
+    override fun render(): ReactElement<TagProps>
 }

@@ -2,15 +2,14 @@
 
 package blueprintjs.core
 
-import react.State
-import react.ReactElement
+import react.*
 
 external object IconSize {
     val STANDARD: Int = definedExternally
     val LARGE: Int = definedExternally
 }
 
-external interface IIconProps : IIntentProps, IProps {
+external interface IconProps : IntentProps, PropsWithClassName, PropsWithChildren {
     /**
      * Color of icon. This is used as the `fill` attribute on the `<svg>` image
      * so it will override any CSS `color` property, including that set by
@@ -54,7 +53,7 @@ external interface IIconProps : IIntentProps, IProps {
     var size: Int?
 
     /** CSS style properties. */
-    // var style: CSSProperties? // TODO
+    var style: CSSProperties? // TODO
 
     /**
      * HTML tag to use for the rendered element.
@@ -75,14 +74,12 @@ external interface IIconProps : IIntentProps, IProps {
     var title: String?
 }
 
-external class Icon : AbstractPureComponent2<IIconProps, State> {
+/**
+ * Icon component.
+ *
+ * https://blueprintjs.com/docs/#core/components/icon
+ */
+external class Icon : AbstractPureComponent2<IconProps, State> {
 
-    override fun render(): ReactElement<IIconProps>
-
-    companion object {
-        @Deprecated("Moved to IconSize", ReplaceWith("IconSize.STANDARD"))
-        val SIZE_STANDARD: Int = definedExternally
-        @Deprecated("Moved to IconSize", ReplaceWith("IconSize.LARGE"))
-        val SIZE_LARGE: Int = definedExternally
-    }
+    override fun render(): ReactElement<IconProps>
 }

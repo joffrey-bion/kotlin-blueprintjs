@@ -2,11 +2,13 @@
 
 package blueprintjs.core
 
+import react.PropsWithChildren
+import react.PropsWithClassName
 import react.State
 import react.ReactElement
 
 /** This component also supports the full range of HTML `<div>` props. */
-external interface ICalloutProps : IIntentProps, IProps, HTMLDivProps {
+external interface CalloutProps : IntentProps, PropsWithClassName, PropsWithChildren, HTMLDivProps {
     /**
      * Name of a Blueprint UI icon (or an icon element) to render on the left side.
      *
@@ -28,9 +30,14 @@ external interface ICalloutProps : IIntentProps, IProps, HTMLDivProps {
      * using this prop (note uppercase tag name to use the Blueprint Heading
      * component).
      */
-    var title: String?
+    override var title: String?
 }
 
-open external class Callout : AbstractPureComponent2<ICalloutProps, State> {
-    override fun render(): ReactElement<ICalloutProps>
+/**
+ * Callout component.
+ *
+ * https://blueprintjs.com/docs/#core/components/callout
+ */
+open external class Callout : AbstractPureComponent2<CalloutProps, State> {
+    override fun render(): ReactElement<CalloutProps>
 }

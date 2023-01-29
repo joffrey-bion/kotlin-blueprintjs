@@ -2,10 +2,10 @@
 
 package blueprintjs.core
 
-import react.State
-import react.ReactElement
+import react.*
+import web.html.HTMLDivElement
 
-external interface IDialogProps : IOverlayableProps, IBackdropProps, IProps {
+external interface DialogProps : OverlayableProps, BackdropProps, PropsWithClassName, PropsWithChildren {
     /**
      * Toggles the visibility of the overlay and its children.
      * This prop is required because the component is controlled.
@@ -39,10 +39,15 @@ external interface IDialogProps : IOverlayableProps, IBackdropProps, IProps {
      */
     var transitionName: String?
 
+    /**
+     * Ref supplied to the `Classes.DIALOG_CONTAINER` element.
+     */
+    var containerRef: Ref<HTMLDivElement>
+
     // TODO aria-labelledby and aria-describedby cannot be added here due Kotlin/JS limitation
     //   https://youtrack.jetbrains.com/issue/KT-31799
 }
 
-external class Dialog : AbstractPureComponent2<IDialogProps, State> {
-    override fun render(): ReactElement<IDialogProps>
+external class Dialog : AbstractPureComponent2<DialogProps, State> {
+    override fun render(): ReactElement<DialogProps>
 }

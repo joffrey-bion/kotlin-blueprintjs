@@ -2,13 +2,14 @@
 
 package blueprintjs.core
 
-import org.w3c.dom.HTMLElement
-import org.w3c.dom.events.Event
 import react.PropsWithChildren
-import react.State
+import react.PropsWithClassName
 import react.ReactElement
+import react.State
+import react.dom.events.SyntheticEvent
+import web.html.HTMLElement
 
-external interface IOverlayableProps : IOverlayLifecycleProps {
+external interface OverlayableProps : OverlayLifecycleProps {
     /**
      * Whether the overlay should acquire application focus when it first opens.
      * @default true
@@ -83,10 +84,10 @@ external interface IOverlayableProps : IOverlayLifecycleProps {
      * mouse or key event). Note that, since this component is controlled by the `isOpen` prop, it
      * will not actually close itself until that prop becomes `false`.
      */
-    var onClose: ((Event) -> Unit)?
+    var onClose: ((SyntheticEvent<HTMLElement, *>) -> Unit)?
 }
 
-external interface IOverlayLifecycleProps {
+external interface OverlayLifecycleProps {
     /**
      * Lifecycle method invoked just before the CSS _close_ transition begins on
      * a child. Receives the DOM element of the child being closed.
@@ -114,7 +115,7 @@ external interface IOverlayLifecycleProps {
     var onOpened: ((node: HTMLElement) -> Unit)?
 }
 
-external interface IBackdropProps {
+external interface BackdropProps {
     /** CSS class names to apply to backdrop element. */
     var backdropClassName: String?
 
@@ -135,7 +136,7 @@ external interface IBackdropProps {
     var hasBackdrop: Boolean?
 }
 
-external interface IOverlayProps : IOverlayableProps, IBackdropProps, IProps {
+external interface OverlayProps : OverlayableProps, BackdropProps, PropsWithClassName, PropsWithChildren {
     /**
      * Toggles the visibility of the overlay and its children.
      * This prop is required because the component is controlled.
@@ -150,10 +151,10 @@ external interface IOverlayProps : IOverlayableProps, IBackdropProps, IProps {
     var transitionName: String?
 }
 
-external interface IOverlayState : State {
+external interface OverlayState : State {
     var hasEverOpened: Boolean?
 }
 
-external class Overlay : AbstractPureComponent2<IOverlayProps, IOverlayState> {
-    override fun render(): ReactElement<IOverlayProps>
+external class Overlay : AbstractPureComponent2<OverlayProps, OverlayState> {
+    override fun render(): ReactElement<OverlayProps>
 }

@@ -7,7 +7,7 @@ version = "$bpIconsVersion-${rootProject.version}"
 description = "Kotlin wrapper for the @blueprintjs/icons module"
 
 kotlin {
-    js(BOTH) {
+    js {
         browser()
         useCommonJs()
     }

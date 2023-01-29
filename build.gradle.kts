@@ -1,5 +1,5 @@
 plugins {
-    kotlin("js") version "1.7.20" apply false
+    kotlin("js") version "1.8.0" apply false
     `maven-publish`
     signing
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
@@ -53,7 +53,7 @@ subprojects {
                     version = project.version.toString()
 
                     from(components["kotlin"])
-                    artifact(tasks.getByName<Zip>("jsLegacySourcesJar"))
+                    artifact(tasks.named("jsSourcesJar"))
                     artifact(dokkaJar)
 
                     configurePomForMavenCentral(project)

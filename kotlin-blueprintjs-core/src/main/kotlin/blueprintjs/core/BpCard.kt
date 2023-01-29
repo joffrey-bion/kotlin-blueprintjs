@@ -2,12 +2,13 @@
 
 package blueprintjs.core
 
-import org.w3c.dom.events.MouseEvent
-import react.PureComponent
-import react.State
+import react.PropsWithClassName
 import react.ReactElement
+import react.State
+import react.dom.events.MouseEventHandler
+import web.html.HTMLDivElement
 
-external interface ICardProps : IProps {
+external interface CardProps : PropsWithClassName, HTMLDivProps {
     /**
      * Controls the intensity of the drop shadow beneath the card: the higher
      * the elevation, the higher the drop shadow. At elevation `0`, no drop
@@ -32,9 +33,9 @@ external interface ICardProps : IProps {
      * Callback invoked when the card is clicked.
      * Recommended when `interactive` is `true`.
      */
-    var onClick: ((e: MouseEvent) -> Unit)?
+    override var onClick: MouseEventHandler<HTMLDivElement>?
 }
 
-open external class Card : AbstractPureComponent2<ICardProps, State> {
-    override fun render(): ReactElement<ICardProps>
+open external class Card : AbstractPureComponent2<CardProps, State> {
+    override fun render(): ReactElement<CardProps>
 }
