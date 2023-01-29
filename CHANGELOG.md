@@ -1,5 +1,18 @@
 # Change Log
 
+## [7](https://github.com/joffrey-bion/kotlin-blueprintjs/tree/7) (2023-01-29)
+[View commits](https://github.com/joffrey-bion/kotlin-blueprintjs/compare/6...7)
+
+**Implemented enhancements:**
+
+- Compile with JS IR only \(legacy JS compiler deprecated in Kotlin 1.8\) [\#15](https://github.com/joffrey-bion/kotlin-blueprintjs/issues/15)
+
+**Upgraded dependencies:**
+
+- Upgrade blueprintjs\-icons to 4.13.0 [\#14](https://github.com/joffrey-bion/kotlin-blueprintjs/issues/14)
+- Upgrade blueprintjs\-core to 4.15.0 [\#13](https://github.com/joffrey-bion/kotlin-blueprintjs/issues/13)
+- Upgrade to Kotlin 1.8.0 [\#12](https://github.com/joffrey-bion/kotlin-blueprintjs/issues/12)
+
 ## [6](https://github.com/joffrey-bion/kotlin-blueprintjs/tree/6) (2022-11-06)
 [View commits](https://github.com/joffrey-bion/kotlin-blueprintjs/compare/5...6)
 
