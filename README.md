@@ -28,7 +28,7 @@ this wrapper library.
 For example: `3.42.0-1` is the version `1` of the module wrapping `@blueprintjs/core` version `3.42.0`
 
 [![core version](https://img.shields.io/maven-central/v/org.hildan.blueprintjs/kotlin-blueprintjs-core.svg?label=kotlin-blueprintjs-core)](http://mvnrepository.com/artifact/org.hildan.blueprintjs/kotlin-blueprintjs-core) <br>
-[![icons version](https://img.shields.io/badge/kotlin--blueprintjs--icons-v3.29.0--4-blue)](http://mvnrepository.com/artifact/org.hildan.blueprintjs/kotlin-blueprintjs-icons)
+[![icons version](https://img.shields.io/maven-central/v/org.hildan.blueprintjs/kotlin-blueprintjs-icons.svg?label=kotlin-blueprintjs-icons)](http://mvnrepository.com/artifact/org.hildan.blueprintjs/kotlin-blueprintjs-icons)
 
 ## Setup
 
@@ -36,6 +36,6 @@ These blueprintjs wrappers are published to Maven Central.
 You can add them to your Gradle dependencies the usual way (you don't need to add transitive BlueprintJS NPM dependencies anymore):
 
 ```kotlin
-implementation("org.hildan.blueprintjs:kotlin-blueprintjs-core:3.49.1-4")
-implementation("org.hildan.blueprintjs:kotlin-blueprintjs-icons:3.29.0-4")
+implementation("org.hildan.blueprintjs:kotlin-blueprintjs-core:$blueprintCoreWrapperVersion")
+implementation("org.hildan.blueprintjs:kotlin-blueprintjs-icons:$blueprintIconsWrapperVersion")
 ```
