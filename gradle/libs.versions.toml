@@ -6,6 +6,4 @@ blueprintjs-icons = "4.13.0"
 [libraries]
 kotlin-wrappers-bom = { module = "org.jetbrains.kotlin-wrappers:kotlin-wrappers-bom", version.ref = "kotlin-wrappers" }
 kotlin-wrappers-react-base = { module = "org.jetbrains.kotlin-wrappers:kotlin-react" }
-kotlin-wrappers-react-legacy = { module = "org.jetbrains.kotlin-wrappers:kotlin-react-legacy" }
-kotlin-wrappers-react-dom-base = { module = "org.jetbrains.kotlin-wrappers:kotlin-react-dom" }
-kotlin-wrappers-react-dom-legacy = { module = "org.jetbrains.kotlin-wrappers:kotlin-react-dom-legacy" }
+kotlin-wrappers-react-dom = { module = "org.jetbrains.kotlin-wrappers:kotlin-react-dom" }

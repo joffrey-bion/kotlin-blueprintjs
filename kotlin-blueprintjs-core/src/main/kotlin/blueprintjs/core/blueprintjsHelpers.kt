@@ -1,346 +1,49 @@
 package blueprintjs.core
 
-import csstype.ClassName
-import react.RBuilder
-import react.RHandler
-import react.ReactElement
-import react.buildElement
-import react.dom.events.ChangeEventHandler
-import react.dom.events.MouseEventHandler
-import react.dom.h2
-import web.html.HTMLButtonElement
-import web.html.HTMLElement
-import web.html.HTMLInputElement
+import react.*
 
-fun RBuilder.bpIcon(
-    name: IconName,
-    size: Int = IconSize.STANDARD,
-    intent: Intent = Intent.NONE,
-    title: String? = null,
-    alt: String? = null,
-    className: ClassName? = null,
-    block: RHandler<IconProps> = {},
-): Unit = child(Icon::class) {
-    attrs {
-        this.icon = name
-        this.size = size
-        this.htmlTitle = title
-        this.intent = intent
-        this.title = alt
-        this.className = className
+val BpButton = Button::class.react
+val BpButtonGroup = ButtonGroup::class.react
+val BpCallout = Callout::class.react
+val BpCard = Card::class.react
+val BpDialog = Dialog::class.react
+val BpDivider = Divider::class.react
+val BpHTMLTable = HTMLTable::class.react
+val BpIcon = Icon::class.react
+val BpInputGroup = InputGroup::class.react
+val BpNonIdealState = NonIdealState::class.react
+val BpOverlay = Overlay::class.react
+val BpPopover = Popover::class.react
+val BpSpinner = Spinner::class.react
+val BpTag = Tag::class.react
+val BpText = Text::class.react
+
+var NonIdealStateProps.titleText: String?
+    get() = title?.asStringOrNull()
+    set(value) {
+        title = value?.let { ReactNode(it) }
     }
-    block()
-}
 
-fun RBuilder.bpButton(
-    minimal: Boolean = false,
-    small: Boolean = false,
-    large: Boolean = false,
-    disabled: Boolean = false,
-    title: String? = null,
-    icon: IconName? = null,
-    rightIcon: IconName? = null,
-    intent: Intent = Intent.NONE,
-    onClick: MouseEventHandler<HTMLElement>? = null,
-    block: RHandler<ButtonProps<HTMLButtonElement>> = {},
-): Unit = child(Button::class) {
-    attrs {
-        this.title = title
-        this.minimal = minimal
-        this.small = small
-        this.large = large
-        this.disabled = disabled
-        this.icon = icon
-        this.rightIcon = rightIcon
-        this.intent = intent
-        this.onClick = onClick
+var DialogProps.titleText: String?
+    get() = title?.asStringOrNull()
+    set(value) {
+        title = value?.let { ReactNode(it) }
     }
-    block()
-}
 
-fun RBuilder.bpButtonGroup(
-    large: Boolean = false,
-    minimal: Boolean = false,
-    block: RHandler<ButtonGroupProps> = {},
-): Unit = child(ButtonGroup::class) {
-    attrs {
-        this.large = large
-        this.minimal = minimal
+var DialogProps.iconName: String?
+    get() = throw IllegalArgumentException("iconName is a helper setter and should not ne used to access the value")
+    set(value) {
+        icon = value
     }
-    block()
-}
 
-fun RBuilder.bpInputGroup(
-    large: Boolean = false,
-    placeholder: String = "",
-    rightElement: ReactElement<*>? = null,
-    value: String? = null,
-    onChange: ChangeEventHandler<HTMLInputElement>,
-): Unit = child(InputGroup::class) {
-    attrs {
-        this.large = large
-        this.placeholder = placeholder
-        this.rightElement = rightElement
-        value?.let { this.value = it }
-        this.onChange = onChange
+var IPopoverProps.contentElement: ReactElement<*>?
+    get() = content.unsafeCast<ReactElement<*>>()
+    set(value) {
+        content = value
     }
-}
 
-fun RBuilder.bpTag(
-    intent: Intent? = null,
-    minimal: Boolean? = null,
-    large: Boolean? = null,
-    round: Boolean? = null,
-    fill: Boolean? = null,
-    active: Boolean? = null,
-    icon: String? = null,
-    className: ClassName? = null,
-    block: RHandler<TagProps> = {},
-): Unit = child(Tag::class) {
-    attrs {
-        intent?.let { this.intent = it }
-        minimal?.let { this.minimal = it }
-        large?.let { this.large = it }
-        round?.let { this.round = it }
-        fill?.let { this.fill = it }
-        icon?.let { this.icon = it }
-        active?.let { this.active = it }
-        className?.let { this.className = it }
+var IPopoverProps.contentText: String?
+    get() = content as String?
+    set(value) {
+        content = value
     }
-    block()
-}
-
-fun RBuilder.bpText(
-    ellipsize: Boolean? = null,
-    tagName: String? = null,
-    block: RHandler<TextProps> = {},
-): Unit = child(Text::class) {
-    attrs {
-        ellipsize?.let { this.ellipsize = it }
-        tagName?.let { this.tagName = it }
-    }
-    block()
-}
-
-fun RBuilder.bpSpinner(
-    size: Int? = null,
-    value: Double? = null,
-    intent: Intent? = null,
-    tagName: String? = null,
-    block: RHandler<SpinnerProps> = {},
-): Unit = child(Spinner::class) {
-    attrs {
-        size?.let { this.size = it }
-        value?.let { this.value = it }
-        intent?.let { this.intent = it }
-        tagName?.let { this.tagName = it }
-    }
-    block()
-}
-
-fun RBuilder.bpNonIdealState(
-    icon: IconName? = null,
-    title: ReactElement<*>? = null,
-    description: ReactElement<*>? = null,
-    action: ReactElement<*>? = null,
-    block: RHandler<NonIdealStateProps> = {},
-) = child(NonIdealState::class) {
-    attrs {
-        icon?.let { this.icon = it }
-        title?.let { this.title = it }
-        description?.let { this.description = it }
-        action?.let { this.action = it }
-    }
-    block()
-}
-
-fun RBuilder.bpNonIdealState(
-    icon: IconName? = null,
-    title: String,
-    description: ReactElement<*>? = null,
-    action: ReactElement<*>? = null,
-    block: RHandler<NonIdealStateProps> = {},
-): Unit = bpNonIdealState(icon, buildElement { h2 { +title } }, description, action, block)
-
-fun RBuilder.bpOverlay(
-    isOpen: Boolean,
-    autoFocus: Boolean = true,
-    enforceFocus: Boolean = true,
-    usePortal: Boolean = true,
-    hasBackdrop: Boolean = true,
-    canEscapeKeyClose: Boolean = true,
-    canOutsideClickClose: Boolean = true,
-    onClose: () -> Unit = {},
-    block: RHandler<OverlayProps> = {},
-): Unit = child(Overlay::class) {
-    attrs {
-        this.isOpen = isOpen
-        this.autoFocus = autoFocus
-        this.enforceFocus = enforceFocus
-        this.usePortal = usePortal
-        this.hasBackdrop = hasBackdrop
-        this.canEscapeKeyClose = canEscapeKeyClose
-        this.canOutsideClickClose = canOutsideClickClose
-        this.onClose = { onClose() }
-    }
-    block()
-}
-
-fun RBuilder.bpDialog(
-    isOpen: Boolean,
-    title: ReactElement<*>? = null,
-    icon: ReactElement<*>? = null,
-    autoFocus: Boolean = true,
-    enforceFocus: Boolean = true,
-    usePortal: Boolean = true,
-    hasBackdrop: Boolean = true,
-    canEscapeKeyClose: Boolean = true,
-    canOutsideClickClose: Boolean = true,
-    isCloseButtonShown: Boolean = true,
-    transitionName: String? = null,
-    onClose: () -> Unit = {},
-    block: RHandler<DialogProps> = {},
-): Unit = child(Dialog::class) {
-    attrs {
-        this.isOpen = isOpen
-        if (title != null) {
-            this.title = title
-        }
-        if (icon != null) {
-            this.icon = icon
-        }
-        this.autoFocus = autoFocus
-        this.enforceFocus = enforceFocus
-        this.usePortal = usePortal
-        this.hasBackdrop = hasBackdrop
-        this.canEscapeKeyClose = canEscapeKeyClose
-        this.canOutsideClickClose = canOutsideClickClose
-        this.isCloseButtonShown = isCloseButtonShown
-        if (transitionName != null) {
-            this.transitionName = transitionName
-        }
-        this.onClose = { onClose() }
-    }
-    block()
-}
-
-fun RBuilder.bpDialog(
-    isOpen: Boolean,
-    title: String?,
-    icon: IconName? = null,
-    iconIntent: Intent = Intent.NONE,
-    autoFocus: Boolean = true,
-    enforceFocus: Boolean = true,
-    usePortal: Boolean = true,
-    hasBackdrop: Boolean = true,
-    canEscapeKeyClose: Boolean = true,
-    canOutsideClickClose: Boolean = true,
-    isCloseButtonShown: Boolean = true,
-    transitionName: String? = null,
-    onClose: () -> Unit = {},
-    block: RHandler<DialogProps> = {},
-): Unit = bpDialog(
-    isOpen = isOpen,
-    title = title?.let { buildElement { +title } },
-    icon = icon?.let { buildElement { bpIcon(name = icon, intent = iconIntent) } },
-    autoFocus = autoFocus,
-    enforceFocus = enforceFocus,
-    usePortal = usePortal,
-    hasBackdrop = hasBackdrop,
-    canEscapeKeyClose = canEscapeKeyClose,
-    canOutsideClickClose = canOutsideClickClose,
-    isCloseButtonShown = isCloseButtonShown,
-    transitionName = transitionName,
-    onClose = onClose,
-    block = block
-)
-
-fun RBuilder.bpPopover(
-    content: ReactElement<*>,
-    hoverOpenDelay: Long? = null,
-    hoverCloseDelay: Long? = null,
-    position: PopoverPosition = PopoverPosition.AUTO,
-    interactionKind: PopoverInteractionKind = PopoverInteractionKind.HOVER,
-    minimal: Boolean = false,
-    canEscapeKeyClose: Boolean = true,
-    className: ClassName? = null,
-    popoverClassName: String? = null,
-    portalClassName: String? = null,
-    onClose: () -> Unit = {},
-    block: RHandler<IPopoverProps> = {},
-): Unit = child(Popover::class) {
-    attrs {
-        this.interactionKind = interactionKind
-        this.minimal = minimal
-        this.content = content
-        this.position = position
-        this.hoverOpenDelay = hoverOpenDelay
-        this.hoverCloseDelay = hoverCloseDelay
-        this.canEscapeKeyClose = canEscapeKeyClose
-        this.className = className
-        this.popoverClassName = popoverClassName
-        this.portalClassName = portalClassName
-        this.onClose = { onClose() }
-    }
-    block()
-}
-
-fun RBuilder.bpCallout(
-    intent: Intent? = Intent.NONE,
-    icon: IconName? = null,
-    title: String? = null,
-    block: RHandler<CalloutProps> = {},
-): Unit = child(Callout::class) {
-    attrs {
-        if (icon != null) {
-            this.icon = icon
-        }
-        this.title = title
-        this.intent = intent
-    }
-    block()
-}
-
-fun RBuilder.bpCard(
-    elevation: Elevation = Elevation.ZERO,
-    interactive: Boolean = false,
-    className: ClassName? = null,
-    onClick: () -> Unit = {},
-    block: RHandler<CardProps> = {},
-): Unit = child(Card::class) {
-    attrs {
-        this.elevation = elevation
-        this.interactive = interactive
-        this.className = className
-        this.onClick = { onClick() }
-    }
-    block()
-}
-
-fun RBuilder.bpHtmlTable(
-    bordered: Boolean = false,
-    interactive: Boolean = false,
-    condensed: Boolean = false,
-    striped: Boolean = false,
-    block: RHandler<HTMLTableProps> = {},
-): Unit = child(HTMLTable::class) {
-    attrs {
-        this.bordered = bordered
-        this.interactive = interactive
-        this.condensed = condensed
-        this.striped = striped
-    }
-    block()
-}
-
-fun RBuilder.bpDivider(
-    tagName: String? = null,
-    block: RHandler<IDividerProps> = {},
-): Unit = child(Divider::class) {
-    attrs {
-        if (tagName != null) {
-            this.tagName = tagName
-        }
-    }
-    block()
-}

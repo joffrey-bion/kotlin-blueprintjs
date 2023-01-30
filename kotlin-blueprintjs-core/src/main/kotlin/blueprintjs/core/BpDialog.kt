@@ -32,7 +32,7 @@ external interface DialogProps : OverlayableProps, BackdropProps, PropsWithClass
      * Title of the dialog. If provided, an element with `Classes.DIALOG_HEADER`
      * will be rendered inside the dialog before any children elements.
      */
-    var title: ReactElement<*>?
+    var title: ReactNode?
     /**
      * Name of the transition for internal `CSSTransition`. Providing your own
      * name here will require defining new CSS transition properties.
@@ -48,6 +48,11 @@ external interface DialogProps : OverlayableProps, BackdropProps, PropsWithClass
     //   https://youtrack.jetbrains.com/issue/KT-31799
 }
 
+/**
+ * Dialog component.
+ *
+ * https://blueprintjs.com/docs/#core/components/dialog
+ */
 external class Dialog : AbstractPureComponent2<DialogProps, State> {
     override fun render(): ReactElement<DialogProps>
 }
