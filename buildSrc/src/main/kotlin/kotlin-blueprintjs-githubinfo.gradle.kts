@@ -4,6 +4,5 @@ plugins {
 
 github {
     user = "joffrey-bion"
-    site = "https://joffrey-bion.github.io/krossbow"
     license = "MIT"
 }
