@@ -1,5 +1,6 @@
 plugins {
     kotlin("js")
+    id("kotlin-blueprintjs-publish")
 }
 
 val bpIconsVersion = libs.versions.blueprintjs.icons.get()
