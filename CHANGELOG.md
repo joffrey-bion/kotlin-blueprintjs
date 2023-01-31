@@ -1,5 +1,13 @@
 # Change Log
 
+## [8](https://github.com/joffrey-bion/kotlin-blueprintjs/tree/8) (2023-01-31)
+[View commits](https://github.com/joffrey-bion/kotlin-blueprintjs/compare/7...8)
+
+**Implemented enhancements:**
+
+- Add DialogBody and DialogFooter [\#17](https://github.com/joffrey-bion/kotlin-blueprintjs/issues/17)
+- Migrate to new Kotlin/React bindings [\#16](https://github.com/joffrey-bion/kotlin-blueprintjs/issues/16)
+
 ## [7](https://github.com/joffrey-bion/kotlin-blueprintjs/tree/7) (2023-01-29)
 [View commits](https://github.com/joffrey-bion/kotlin-blueprintjs/compare/6...7)
 
