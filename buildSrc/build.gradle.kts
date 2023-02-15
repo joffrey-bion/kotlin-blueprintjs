@@ -14,6 +14,6 @@ dependencies {
     implementation(kotlin("gradle-plugin", "1.8.0"))
     implementation("org.jetbrains.dokka:dokka-gradle-plugin:1.7.20")
 
-    implementation("org.hildan.gradle:gradle-kotlin-publish-plugin:0.2.0")
-    implementation("ru.vyarus:gradle-github-info-plugin:1.4.0")
+    implementation("org.hildan.gradle:gradle-kotlin-publish-plugin:1.0.0")
+    implementation("ru.vyarus:gradle-github-info-plugin:1.5.0")
 }
