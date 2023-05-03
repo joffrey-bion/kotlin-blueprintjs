@@ -1,5 +1,5 @@
 plugins {
-    kotlin("js")
+    kotlin("multiplatform")
     id("kotlin-blueprintjs-publish")
 }
 
@@ -13,7 +13,7 @@ kotlin {
         useCommonJs()
     }
     sourceSets {
-        main {
+        val jsMain by getting {
             dependencies {
                 api(project.dependencies.platform(libs.kotlin.wrappers.bom))
                 api(libs.kotlin.wrappers.react.base)
