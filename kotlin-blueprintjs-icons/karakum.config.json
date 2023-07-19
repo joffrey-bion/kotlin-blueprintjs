@@ -1,0 +1,5 @@
+{
+    "input": "<nodeModules>/@blueprintjs/icons/lib/esm/index.d.ts",
+    "output": "src/jsMain/generated",
+    "libraryName": "blueprintjs-icons"
+}
