@@ -1,6 +1,6 @@
 # BlueprintJS for Kotlin/React
 
-[![Github Build](https://img.shields.io/github/actions/workflow/status/joffrey-bion/kotlin-blueprintjs/ci.yml?branch=main&logo=github)](https://github.com/joffrey-bion/kotlin-blueprintjs/actions/workflows/ci.yml)
+[![Github Build](https://img.shields.io/github/actions/workflow/status/joffrey-bion/kotlin-blueprintjs/build.yml?branch=main&logo=github)](https://github.com/joffrey-bion/kotlin-blueprintjs/actions/workflows/build.yml)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/joffrey-bion/kotlin-blueprintjs/blob/main/LICENSE)
 
 Kotlin wrappers for Palantir's [BlueprintJS](https://blueprintjs.com/) React components library.
