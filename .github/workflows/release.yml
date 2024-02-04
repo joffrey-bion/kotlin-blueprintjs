@@ -7,6 +7,8 @@ on:
         description: "New wrapper version (single number suffix)"
         required: true
 
+run-name: "Release ${{ inputs.version }}"
+
 jobs:
   release:
     runs-on: ubuntu-latest
