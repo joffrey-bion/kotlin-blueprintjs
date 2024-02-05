@@ -1,6 +1,6 @@
 plugins {
     id("org.jetbrains.dokka")
-    id("org.hildan.github.changelog") version "2.0.0"
+    id("org.hildan.github.changelog") version "2.2.0"
     id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
     id("kotlin-blueprintjs-githubinfo")
 }
