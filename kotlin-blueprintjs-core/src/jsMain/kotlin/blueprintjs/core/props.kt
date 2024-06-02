@@ -2,12 +2,10 @@
 
 package blueprintjs.core
 
-import csstype.ClassName
-import react.PropsWithClassName
-import react.Ref
-import react.dom.events.FormEventHandler
-import react.dom.events.MouseEventHandler
-import web.html.HTMLElement
+import react.*
+import react.dom.events.*
+import web.cssom.*
+import web.html.*
 import kotlin.js.Json
 
 external val DISPLAYNAME_PREFIX: String
