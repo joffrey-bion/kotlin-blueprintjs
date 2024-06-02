@@ -1,9 +1,11 @@
 plugins {
     id("org.hildan.kotlin-publish")
     id("org.jetbrains.dokka")
-    id("kotlin-blueprintjs-githubinfo")
+    id("kotlin-blueprintjs.githubinfo")
     signing
 }
+
+group = "org.hildan.blueprintjs"
 
 publishing {
     // configureEach reacts on new publications being registered and configures them too

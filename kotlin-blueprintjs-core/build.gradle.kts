@@ -1,6 +1,6 @@
 plugins {
     kotlin("multiplatform")
-    id("kotlin-blueprintjs-publish")
+    id("kotlin-blueprintjs.publish")
 }
 
 val bpCoreVersion = libs.versions.blueprintjs.core.get()
