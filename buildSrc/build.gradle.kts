@@ -11,7 +11,8 @@ dependencies {
     implementation(gradleApi())
     implementation(gradleKotlinDsl())
 
-    implementation(kotlin("gradle-plugin", "1.9.0"))
+    // we're not using the kotlin("gradle-plugin", ...) shortcut because dependabot doesn't understand it
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0")
     implementation("org.jetbrains.dokka:dokka-gradle-plugin:1.9.20")
 
     implementation("org.hildan.gradle:gradle-kotlin-publish-plugin:1.3.0")
