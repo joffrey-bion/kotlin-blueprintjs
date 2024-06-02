@@ -7,29 +7,29 @@ import react.dom.events.SyntheticEvent
 import react.dom.html.HTMLAttributes
 import web.html.*
 
-external enum class PopoverInteractionKind {
-    CLICK,
-    CLICK_TARGET_ONLY,
-    HOVER,
-    HOVER_TARGET_ONLY
+external sealed class PopoverInteractionKind {
+    object CLICK : PopoverInteractionKind
+    object CLICK_TARGET_ONLY : PopoverInteractionKind
+    object HOVER : PopoverInteractionKind
+    object HOVER_TARGET_ONLY : PopoverInteractionKind
 }
 
-external enum class PopoverPosition {
-    AUTO,
-    AUTO_END,
-    AUTO_START,
-    BOTTOM,
-    BOTTOM_LEFT,
-    BOTTOM_RIGHT,
-    LEFT,
-    LEFT_BOTTOM,
-    LEFT_TOP,
-    RIGHT,
-    RIGHT_BOTTOM,
-    RIGHT_TOP,
-    TOP,
-    TOP_LEFT,
-    TOP_RIGHT
+external sealed class PopoverPosition {
+    object AUTO : PopoverPosition
+    object AUTO_END : PopoverPosition
+    object AUTO_START : PopoverPosition
+    object BOTTOM : PopoverPosition
+    object BOTTOM_LEFT : PopoverPosition
+    object BOTTOM_RIGHT : PopoverPosition
+    object LEFT : PopoverPosition
+    object LEFT_BOTTOM : PopoverPosition
+    object LEFT_TOP : PopoverPosition
+    object RIGHT : PopoverPosition
+    object RIGHT_BOTTOM : PopoverPosition
+    object RIGHT_TOP : PopoverPosition
+    object TOP : PopoverPosition
+    object TOP_LEFT : PopoverPosition
+    object TOP_RIGH : PopoverPosition
 }
 
 external interface PopoverSharedProps : OverlayableProps, PropsWithClassName, PropsWithChildren {

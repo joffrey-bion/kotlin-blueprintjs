@@ -1,50 +1,51 @@
 @file:JsModule("@blueprintjs/core")
+@file:Suppress("ConvertObjectToDataObject") // false positive
 
 package blueprintjs.core
 
 /**
  * The four basic intents.
  */
-external enum class Intent {
-    NONE,
-    PRIMARY,
-    SUCCESS,
-    WARNING,
-    DANGER
+sealed external class Intent {
+    object NONE : Intent
+    object PRIMARY : Intent
+    object SUCCESS : Intent
+    object WARNING : Intent
+    object DANGER : Intent
 }
 
 /** Alignment along the horizontal axis. */
-external enum class Alignment {
-    CENTER,
-    LEFT,
-    RIGHT
+sealed external class Alignment {
+    object CENTER : Alignment
+    object LEFT : Alignment
+    object RIGHT : Alignment
 }
 
 /** Boundary of a one-dimensional interval. */
-external enum class Boundary {
-    START,
-    END,
+sealed external class Boundary {
+    object START : Boundary
+    object END : Boundary
 }
 
-external enum class Elevation {
-    ZERO,
-    ONE,
-    TWO,
-    THREE,
-    FOUR
+sealed external class Elevation {
+    object ZERO : Elevation
+    object ONE : Elevation
+    object TWO : Elevation
+    object THREE : Elevation
+    object FOUR : Elevation
 }
 
-external enum class Position {
-    BOTTOM,
-    BOTTOM_LEFT,
-    BOTTOM_RIGHT,
-    LEFT,
-    LEFT_BOTTOM,
-    LEFT_TOP,
-    RIGHT,
-    RIGHT_BOTTOM,
-    RIGHT_TOP,
-    TOP,
-    TOP_LEFT,
-    TOP_RIGHT,
+sealed external class Position {
+    object BOTTOM : Position
+    object BOTTOM_LEFT : Position
+    object BOTTOM_RIGHT : Position
+    object LEFT : Position
+    object LEFT_BOTTOM : Position
+    object LEFT_TOP : Position
+    object RIGHT : Position
+    object RIGHT_BOTTOM : Position
+    object RIGHT_TOP : Position
+    object TOP : Position
+    object TOP_LEFT : Position
+    object TOP_RIGHT : Position
 }
