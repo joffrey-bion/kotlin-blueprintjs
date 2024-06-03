@@ -2,32 +2,42 @@
 
 package blueprintjs.core
 
-import react.PropsWithChildren
-import react.ReactElement
-import react.State
+import blueprintjs.icons.*
+import react.*
 import react.dom.events.ChangeEventHandler
 import react.dom.html.SelectHTMLAttributes
 import web.html.HTMLSelectElement
 
-external interface IHTMLSelectProps :
-    IElementRefProps<HTMLSelectElement>,
+external interface HTMLSelectProps :
+    PropsWithRef<HTMLSelectElement>,
     SelectHTMLAttributes<HTMLSelectElement>,
     PropsWithChildren
 {
+    // 'children' is declared via PropsWithChildren
+
     /** Whether this element is non-interactive. */
     override var disabled: Boolean?
 
     /** Whether this element should fill its container. */
     var fill: Boolean?
 
+    /**
+     * Name of one of the supported icons for this component to display on the right side of the element.
+     *
+     * @default "double-caret-vertical"
+     */
+    var iconName: dynamic // HTMLSelectIconName = Extends<IconName, "double-caret-vertical" | "caret-down">
+
     /** Props to spread to the `<Icon>` element. */
-    var iconProps: IconProps?
+    var iconProps: SVGIconProps<*>?
 
     /** Whether to use large styles. */
     var large: Boolean?
 
     /** Whether to use minimal styles. */
     var minimal: Boolean?
+
+    // can't override 'multiple' with nothing (to mimic TS's never) because it's a var
 
     /** Change event handler. Use `event.currentTarget.value` to access the new value. */
     override var onChange: ChangeEventHandler<HTMLSelectElement>?
@@ -37,10 +47,10 @@ external interface IHTMLSelectProps :
      * `{ label?, value }` objects. If no `label` is supplied, `value`
      * will be used as the label.
      */
-    var options: Array<Any /* string | number | OptionProps */>?
+    var options: Array<Any>? // ReadonlyArray<string | number | OptionProps>
 
     /** Controlled value of this component. */
-    override var value: Any? /* String | Number | null */
+    override var value: Any? /* string | number | null */
 }
 
 /**
@@ -48,6 +58,4 @@ external interface IHTMLSelectProps :
  *
  * https://blueprintjs.com/docs/#core/components/html-select
  */
-open external class HTMLSelect : AbstractPureComponent2<IHTMLSelectProps, State> {
-    override fun render(): ReactElement<IHTMLSelectProps>
-}
+external val HTMLSelect : FC<HTMLSelectProps>

@@ -6,11 +6,18 @@ import react.*
 import web.html.HTMLDivElement
 
 external interface DialogProps : OverlayableProps, BackdropProps, PropsWithClassName, PropsWithChildren {
+
+    // 'children' is declared via PropsWithChildren
+
     /**
      * Toggles the visibility of the overlay and its children.
      * This prop is required because the component is controlled.
      */
     var isOpen: Boolean
+
+    // 'hasBackdrop' cannot be overridden with Nothing (to mimic the TS 'never')
+    // because it is a 'var' property.
+
     /**
      * Name of a Blueprint UI icon (or an icon element) to render in the
      * dialog's header. Note that the header will only be rendered if `title` is
@@ -20,6 +27,7 @@ external interface DialogProps : OverlayableProps, BackdropProps, PropsWithClass
     /**
      * Whether to show the close button in the dialog's header.
      * Note that the header will only be rendered if `title` is provided.
+     *
      * @default true
      */
     var isCloseButtonShown: Boolean?
@@ -27,7 +35,7 @@ external interface DialogProps : OverlayableProps, BackdropProps, PropsWithClass
      * CSS styles to apply to the dialog.
      * @default {}
      */
-    var style: dynamic
+    var style: CSSProperties
     /**
      * Title of the dialog. If provided, an element with `Classes.DIALOG_HEADER`
      * will be rendered inside the dialog before any children elements.
@@ -53,6 +61,6 @@ external interface DialogProps : OverlayableProps, BackdropProps, PropsWithClass
  *
  * https://blueprintjs.com/docs/#core/components/dialog
  */
-external class Dialog : AbstractPureComponent2<DialogProps, State> {
+external class Dialog : AbstractPureComponent<DialogProps, State> {
     override fun render(): ReactElement<DialogProps>
 }

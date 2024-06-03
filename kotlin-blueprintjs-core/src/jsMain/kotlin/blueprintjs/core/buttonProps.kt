@@ -2,17 +2,11 @@
 
 package blueprintjs.core
 
-import react.PropsWithChildren
-import react.ReactElement
-import react.State
-import web.html.HTMLAnchorElement
-import web.html.HTMLButtonElement
-import web.html.HTMLElement
+import react.*
+import react.dom.html.*
+import web.html.*
 
-external interface ButtonProps<E : HTMLElement /* HTMLButtonElement | HTMLAnchorElement */> :
-    ActionProps,
-    IElementRefProps<E>,
-    PropsWithChildren { // artificially added PropsWithChildren so ButtonProps can be used in AbstractPureComponent2
+external interface ButtonSharedProps<T : HTMLElement> : ActionProps<T> {
 
     // artificially added to allow title on button (should probably be on more general props)
     var title: String?
@@ -58,37 +52,16 @@ external interface ButtonProps<E : HTMLElement /* HTMLButtonElement | HTMLAnchor
     /** Whether this button should use small styles. */
     var small: Boolean?
 
-    /**
-     * HTML `type` attribute of button. Accepted values are `"button"`, `"submit"`, and `"reset"`.
-     * Note that this prop has no effect on `AnchorButton`; it only affects `Button`.
-     * @default "button"
-     */
-    var type: String? // "submit" | "reset" | "button";
-}
-
-// AnchorButtonProps in typealiases
-
-external interface IButtonState : State {
-    var isActive: Boolean
-}
-
-abstract external class AbstractButton<E : HTMLElement /* HTMLButtonElement | HTMLAnchorElement */> :
-    AbstractPureComponent2<ButtonProps<E>, IButtonState>
-
-/**
- * Button component.
- *
- * https://blueprintjs.com/docs/#core/components/button
- */
-external class Button : AbstractButton<HTMLButtonElement> {
-    override fun render(): ReactElement<ButtonProps<HTMLButtonElement>>
+    // 'type' is already in different HTMLAttributes subclasses with a different types,
+    // so we can't really declare it here with a general type.
 }
 
 /**
- * AnchorButton component.
+ * Props interface assignable to both the Button and AnchorButton components.
  *
- * https://blueprintjs.com/docs/#core/components/button
+ * It is useful for the props for the two components to be assignable to each other because the components
+ * are so similar and distinguishing between them in their event handlers is usually unnecessary.
  */
-external class AnchorButton : AbstractButton<HTMLAnchorElement> {
-    override fun render(): ReactElement<ButtonProps<HTMLAnchorElement>>
-}
+external interface ButtonSharedPropsAndAttributes : ButtonSharedProps<HTMLElement>, HTMLAttributes<HTMLElement>
+external interface ButtonProps : ButtonSharedProps<HTMLButtonElement>, ButtonHTMLAttributes<HTMLButtonElement>, PropsWithRef<HTMLButtonElement>
+external interface AnchorButtonProps : ButtonSharedProps<HTMLAnchorElement>, AnchorHTMLAttributes<HTMLAnchorElement>, PropsWithRef<HTMLAnchorElement>

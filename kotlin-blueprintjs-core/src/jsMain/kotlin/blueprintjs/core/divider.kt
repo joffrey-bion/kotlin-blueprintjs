@@ -3,8 +3,10 @@
 package blueprintjs.core
 
 import react.*
+import react.dom.html.*
+import web.html.*
 
-external interface IDividerProps : PropsWithClassName, PropsWithChildren {
+external interface DividerProps : PropsWithClassName, HTMLAttributes<HTMLElement> {
     /**
      * HTML tag to use for element.
      *
@@ -18,6 +20,6 @@ external interface IDividerProps : PropsWithClassName, PropsWithChildren {
  *
  * https://blueprintjs.com/docs/#core/components/divider
  */
-open external class Divider : AbstractPureComponent2<IDividerProps, State> {
-    override fun render(): ReactElement<IDividerProps>
+open external class Divider : AbstractPureComponent<DividerProps, State> {
+    override fun render(): ReactElement<DividerProps>
 }

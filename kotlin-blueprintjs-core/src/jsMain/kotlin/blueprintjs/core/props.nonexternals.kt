@@ -1,17 +1,10 @@
 package blueprintjs.core
 
-import react.ReactElement
+import react.*
 import react.dom.html.HTMLAttributes
 import react.dom.html.InputHTMLAttributes
 import web.html.HTMLDivElement
 import web.html.HTMLInputElement
-
-/**
- * Alias for a `JSX.Element` or a value that renders nothing.
- *
- * In React, `boolean`, `null`, and `undefined` do not produce any output.
- */
-typealias MaybeElement = ReactElement<*>?
 
 /**
  * Alias for all valid HTML props for `<div>` element.
@@ -26,3 +19,10 @@ typealias HTMLDivProps = HTMLAttributes<HTMLDivElement>
  */
 // export declare type HTMLInputProps = React.InputHTMLAttributes<HTMLInputElement>
 typealias HTMLInputProps = InputHTMLAttributes<HTMLInputElement>
+
+/**
+ * Alias for a `JSX.Element` or a value that renders nothing.
+ *
+ * In React, `boolean`, `null`, and `undefined` do not produce any output.
+ */
+typealias MaybeElement = ReactElement<*>?

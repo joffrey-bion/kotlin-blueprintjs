@@ -20,6 +20,7 @@ kotlin {
                 api(libs.kotlin.wrappers.react.dom)
 
                 api(npm("@blueprintjs/core", bpCoreVersion))
+                api(project(":kotlin-blueprintjs-icons")) // the npm core package depends on icons
             }
         }
     }

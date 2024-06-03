@@ -2,11 +2,12 @@
 
 package blueprintjs.core
 
-// exported as an object named "Classes" in index.d.ts
+// common/classes.d.ts exported as an object named "Classes" from common/index.d.ts
 external object Classes {
     val ACTIVE: String = definedExternally
     val ALIGN_LEFT: String = definedExternally
     val ALIGN_RIGHT: String = definedExternally
+    val COMPACT: String = definedExternally
     val DARK: String = definedExternally
     val DISABLED: String = definedExternally
     val FILL: String = definedExternally
@@ -18,8 +19,11 @@ external object Classes {
     val LOADING: String = definedExternally
     val MINIMAL: String = definedExternally
     val OUTLINED: String = definedExternally
+    val PADDED: String = definedExternally
     val MULTILINE: String = definedExternally
+    val READ_ONLY: String = definedExternally
     val ROUND: String = definedExternally
+    val SELECTED: String = definedExternally
     val SMALL: String = definedExternally
     val VERTICAL: String = definedExternally
     val POSITION_TOP: String = definedExternally
@@ -36,6 +40,7 @@ external object Classes {
     val INTENT_WARNING: String = definedExternally
     val INTENT_DANGER: String = definedExternally
     val FOCUS_DISABLED: String = definedExternally
+    val FOCUS_STYLE_MANAGER_IGNORE: String = definedExternally
     val UI_TEXT: String = definedExternally
     val RUNNING_TEXT: String = definedExternally
     val MONOSPACE_TEXT: String = definedExternally
@@ -64,25 +69,38 @@ external object Classes {
     val BUTTON_SPINNER: String = definedExternally
     val BUTTON_TEXT: String = definedExternally
     val CALLOUT: String = definedExternally
+    val CALLOUT_HAS_BODY_CONTENT: String = definedExternally
     val CALLOUT_ICON: String = definedExternally
     val CARD: String = definedExternally
+    val CONTROL_CARD: String = definedExternally
+    val CONTROL_CARD_LABEL: String = definedExternally
+    val SWITCH_CONTROL_CARD: String = definedExternally
+    val CHECKBOX_CONTROL_CARD: String = definedExternally
+    val RADIO_CONTROL_CARD: String = definedExternally
+    val CARD_LIST: String = definedExternally
+    val CARD_LIST_BORDERED: String = definedExternally
     val COLLAPSE: String = definedExternally
     val COLLAPSE_BODY: String = definedExternally
-    val COLLAPSIBLE_LIST: String = definedExternally
     val CONTEXT_MENU: String = definedExternally
-    val CONTEXT_MENU_POPOVER_TARGET: String = definedExternally
+    val CONTEXT_MENU_VIRTUAL_TARGET: String = definedExternally
+    val CONTEXT_MENU_POPOVER: String = definedExternally
+    val CONTEXT_MENU_BACKDROP: String = definedExternally
     val CONTROL_GROUP: String = definedExternally
     val DIALOG: String = definedExternally
     val DIALOG_CONTAINER: String = definedExternally
+    val DIALOG_HEADER: String = definedExternally
     val DIALOG_BODY: String = definedExternally
+    val DIALOG_BODY_SCROLL_CONTAINER: String = definedExternally
     val DIALOG_CLOSE_BUTTON: String = definedExternally
     val DIALOG_FOOTER: String = definedExternally
+    val DIALOG_FOOTER_FIXED: String = definedExternally
+    val DIALOG_FOOTER_MAIN_SECTION: String = definedExternally
     val DIALOG_FOOTER_ACTIONS: String = definedExternally
-    val DIALOG_HEADER: String = definedExternally
     val DIALOG_STEP: String = definedExternally
     val DIALOG_STEP_CONTAINER: String = definedExternally
     val DIALOG_STEP_TITLE: String = definedExternally
     val DIALOG_STEP_ICON: String = definedExternally
+    val DIALOG_STEP_VIEWED: String = definedExternally
     val DIVIDER: String = definedExternally
     val DRAWER: String = definedExternally
     val DRAWER_BODY: String = definedExternally
@@ -93,24 +111,36 @@ external object Classes {
     val EDITABLE_TEXT_EDITING: String = definedExternally
     val EDITABLE_TEXT_INPUT: String = definedExternally
     val EDITABLE_TEXT_PLACEHOLDER: String = definedExternally
+    val ENTITY_TITLE: String = definedExternally
+    val ENTITY_TITLE_ELLIPSIZE: String = definedExternally
+    val ENTITY_TITLE_HAS_SUBTITLE: String = definedExternally
+    val ENTITY_TITLE_ICON_CONTAINER: String = definedExternally
+    val ENTITY_TITLE_SUBTITLE: String = definedExternally
+    val ENTITY_TITLE_TAGS_CONTAINER: String = definedExternally
+    val ENTITY_TITLE_TEXT: String = definedExternally
+    val ENTITY_TITLE_TITLE: String = definedExternally
+    val ENTITY_TITLE_TITLE_AND_TAGS: String = definedExternally
     val FLEX_EXPANDER: String = definedExternally
     val HTML_SELECT: String = definedExternally
-    /** @deprecated prefer `<HTMLSelect>` component */
+    /** @deprecated use `<HTMLSelect>` component or `Classes.HTML_SELECT` instead */
     val SELECT: String = definedExternally
     val HTML_TABLE: String = definedExternally
     val HTML_TABLE_BORDERED: String = definedExternally
-    val HTML_TABLE_CONDENSED: String = definedExternally
     val HTML_TABLE_STRIPED: String = definedExternally
     val INPUT: String = definedExternally
     val INPUT_GHOST: String = definedExternally
     val INPUT_GROUP: String = definedExternally
     val INPUT_LEFT_CONTAINER: String = definedExternally
     val INPUT_ACTION: String = definedExternally
+    val RESIZABLE_INPUT_SPAN: String = definedExternally
+    val TEXT_AREA: String = definedExternally
+    val TEXT_AREA_AUTO_RESIZE: String = definedExternally
     val CONTROL: String = definedExternally
     val CONTROL_INDICATOR: String = definedExternally
     val CONTROL_INDICATOR_CHILD: String = definedExternally
     val CHECKBOX: String = definedExternally
     val RADIO: String = definedExternally
+    val RADIO_GROUP: String = definedExternally
     val SWITCH: String = definedExternally
     val SWITCH_INNER_TEXT: String = definedExternally
     val FILE_INPUT: String = definedExternally
@@ -128,23 +158,40 @@ external object Classes {
     val FORM_GROUP: String = definedExternally
     val FORM_CONTENT: String = definedExternally
     val FORM_HELPER_TEXT: String = definedExternally
+    val FORM_GROUP_SUB_LABEL: String = definedExternally
     val MENU: String = definedExternally
     val MENU_ITEM: String = definedExternally
+    val MENU_ITEM_IS_SELECTABLE: String = definedExternally
+    val MENU_ITEM_SELECTED_ICON: String = definedExternally
+    val MENU_ITEM_ICON: String = definedExternally
     val MENU_ITEM_LABEL: String = definedExternally
     val MENU_SUBMENU: String = definedExternally
+    val MENU_SUBMENU_ICON: String = definedExternally
     val MENU_DIVIDER: String = definedExternally
     val MENU_HEADER: String = definedExternally
     val MULTISTEP_DIALOG: String = definedExternally
     val MULTISTEP_DIALOG_PANELS: String = definedExternally
     val MULTISTEP_DIALOG_LEFT_PANEL: String = definedExternally
     val MULTISTEP_DIALOG_RIGHT_PANEL: String = definedExternally
-    val MULTISTEP_DIALOG_FOOTER: String = definedExternally
+    val MULTISTEP_DIALOG_NAV_TOP: String = definedExternally
+    val MULTISTEP_DIALOG_NAV_RIGHT: String = definedExternally
+    val SECTION: String = definedExternally
+    val SECTION_COLLAPSED: String = definedExternally
+    val SECTION_HEADER: String = definedExternally
+    val SECTION_HEADER_LEFT: String = definedExternally
+    val SECTION_HEADER_TITLE: String = definedExternally
+    val SECTION_HEADER_SUB_TITLE: String = definedExternally
+    val SECTION_HEADER_DIVIDER: String = definedExternally
+    val SECTION_HEADER_TABS: String = definedExternally
+    val SECTION_HEADER_RIGHT: String = definedExternally
+    val SECTION_CARD: String = definedExternally
     val NAVBAR: String = definedExternally
     val NAVBAR_GROUP: String = definedExternally
     val NAVBAR_HEADING: String = definedExternally
     val NAVBAR_DIVIDER: String = definedExternally
     val NON_IDEAL_STATE: String = definedExternally
     val NON_IDEAL_STATE_VISUAL: String = definedExternally
+    val NON_IDEAL_STATE_TEXT: String = definedExternally
     val NUMERIC_INPUT: String = definedExternally
     val OVERFLOW_LIST: String = definedExternally
     val OVERFLOW_LIST_SPACER: String = definedExternally
@@ -155,22 +202,33 @@ external object Classes {
     val OVERLAY_INLINE: String = definedExternally
     val OVERLAY_OPEN: String = definedExternally
     val OVERLAY_SCROLL_CONTAINER: String = definedExternally
+    val OVERLAY_START_FOCUS_TRAP: String = definedExternally
+    val OVERLAY_END_FOCUS_TRAP: String = definedExternally
     val PANEL_STACK: String = definedExternally
     val PANEL_STACK_HEADER: String = definedExternally
     val PANEL_STACK_HEADER_BACK: String = definedExternally
     val PANEL_STACK_VIEW: String = definedExternally
+    val PANEL_STACK2: String = definedExternally
+    val PANEL_STACK2_HEADER: String = definedExternally
+    val PANEL_STACK2_HEADER_BACK: String = definedExternally
+    val PANEL_STACK2_VIEW: String = definedExternally
     val POPOVER: String = definedExternally
     val POPOVER_ARROW: String = definedExternally
     val POPOVER_BACKDROP: String = definedExternally
     val POPOVER_CAPTURING_DISMISS: String = definedExternally
     val POPOVER_CONTENT: String = definedExternally
+    val POPOVER_CONTENT_PLACEMENT: String = definedExternally
     val POPOVER_CONTENT_SIZING: String = definedExternally
     val POPOVER_DISMISS: String = definedExternally
     val POPOVER_DISMISS_OVERRIDE: String = definedExternally
+    val POPOVER_MATCH_TARGET_WIDTH: String = definedExternally
     val POPOVER_OPEN: String = definedExternally
+    val POPOVER_POPPER_ESCAPED: String = definedExternally
+    val POPOVER_REFERENCE_HIDDEN: String = definedExternally
     val POPOVER_TARGET: String = definedExternally
+    val POPOVER_TRANSITION_CONTAINER: String = definedExternally
+    /** @deprecated, no longer used in Blueprint v5.x */
     val POPOVER_WRAPPER: String = definedExternally
-    val TRANSITION_CONTAINER: String = definedExternally
     val PROGRESS_BAR: String = definedExternally
     val PROGRESS_METER: String = definedExternally
     val PROGRESS_NO_STRIPES: String = definedExternally
@@ -190,7 +248,10 @@ external object Classes {
     val SPINNER_HEAD: String = definedExternally
     val SPINNER_NO_SPIN: String = definedExternally
     val SPINNER_TRACK: String = definedExternally
+    val SEGMENTED_CONTROL: String = definedExternally
     val TAB: String = definedExternally
+    val TAB_ICON: String = definedExternally
+    val TAB_TAG: String = definedExternally
     val TAB_INDICATOR: String = definedExternally
     val TAB_INDICATOR_WRAPPER: String = definedExternally
     val TAB_LIST: String = definedExternally
@@ -198,6 +259,11 @@ external object Classes {
     val TABS: String = definedExternally
     val TAG: String = definedExternally
     val TAG_REMOVE: String = definedExternally
+    val COMPOUND_TAG: String = definedExternally
+    val COMPOUND_TAG_LEFT: String = definedExternally
+    val COMPOUND_TAG_LEFT_CONTENT: String = definedExternally
+    val COMPOUND_TAG_RIGHT: String = definedExternally
+    val COMPOUND_TAG_RIGHT_CONTENT: String = definedExternally
     val TAG_INPUT: String = definedExternally
     val TAG_INPUT_ICON: String = definedExternally
     val TAG_INPUT_VALUES: String = definedExternally
@@ -221,10 +287,27 @@ external object Classes {
     val TREE_NODE_SELECTED: String = definedExternally
     val TREE_ROOT: String = definedExternally
     val ICON: String = definedExternally
-    /** @deprecated use <Icon> components and iconName prop APIs instead */
-    @Deprecated("use <Icon> components and iconName prop APIs instead")
     val ICON_STANDARD: String = definedExternally
-    /** @deprecated use <Icon> components and iconName prop APIs instead */
-    @Deprecated("use <Icon> components and iconName prop APIs instead")
     val ICON_LARGE: String = definedExternally
+    val ICON_MUTED: String = definedExternally
+    
+    /**
+     * Returns the namespace prefix for all Blueprint CSS classes.
+     * Customize this namespace at build time by defining it with `webpack.DefinePlugin`.
+     */
+    fun getClassNamespace(): String;
+    /** Return CSS class for alignment. */
+    fun alignmentClass(alignment: Alignment?): String?
+    fun elevationClass(elevation: Elevation): String
+    fun elevationClass(elevation: Elevation?): String?
+    /**
+     * Returns CSS class for icon name.
+     */
+    fun iconClass(iconName: String): String
+    fun iconClass(iconName: String?): String?
+    /** Return CSS class for intent. */
+    fun intentClass(intent: Intent): String
+    fun intentClass(intent: Intent?): String?
+    fun positionClass(position: Position): String
+    fun positionClass(position: Position?): String?
 }

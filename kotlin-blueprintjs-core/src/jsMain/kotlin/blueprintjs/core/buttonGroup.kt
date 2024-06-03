@@ -2,11 +2,10 @@
 
 package blueprintjs.core
 
-import react.PropsWithClassName
-import react.State
-import react.ReactElement
+import react.*
+import web.html.*
 
-external interface ButtonGroupProps : PropsWithClassName, HTMLDivProps {
+external interface ButtonGroupProps : PropsWithClassName, PropsWithChildren, HTMLDivProps, PropsWithRef<HTMLDivElement> {
     /**
      * Text alignment within button. By default, icons and text will be centered
      * within the button. Passing `"left"` or `"right"` will align the button
@@ -14,6 +13,8 @@ external interface ButtonGroupProps : PropsWithClassName, HTMLDivProps {
      * `"center"` will center the text and icons together.
      */
     var alignText: Alignment?
+
+    // 'children' is declared via PropsWithChildren
 
     /**
      * Whether the button group should take up the full width of its container.
@@ -45,6 +46,4 @@ external interface ButtonGroupProps : PropsWithClassName, HTMLDivProps {
  *
  * https://blueprintjs.com/docs/#core/components/button-group
  */
-external class ButtonGroup : AbstractPureComponent2<ButtonGroupProps, State> {
-    override fun render(): ReactElement<ButtonGroupProps>
-}
+external val ButtonGroup : FC<ButtonGroupProps>

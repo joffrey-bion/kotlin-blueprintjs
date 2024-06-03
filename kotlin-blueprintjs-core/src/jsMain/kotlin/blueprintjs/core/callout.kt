@@ -9,6 +9,14 @@ import react.ReactElement
 
 /** This component also supports the full range of HTML `<div>` props. */
 external interface CalloutProps : IntentProps, PropsWithClassName, PropsWithChildren, HTMLDivProps {
+
+    // 'children' is declared via PropsWithChildren
+
+    /**
+     * Whether to use a compact appearance, which reduces the visual padding around callout content.
+     */
+    var compact: Boolean?
+
     /**
      * Name of a Blueprint UI icon (or an icon element) to render on the left side.
      *
@@ -16,12 +24,14 @@ external interface CalloutProps : IntentProps, PropsWithClassName, PropsWithChil
      * If this prop is explicitly `null`, no icon will be displayed (regardless of `intent`).
      */
     var icon: dynamic /* IconName | MaybeElement */
+
     /**
      * Visual intent color to apply to background, title, and icon.
      *
      * Defining this prop also applies a default icon, if the `icon` prop is omitted.
      */
     override var intent: Intent?
+
     /**
      * String content of optional title element.
      *
@@ -38,6 +48,6 @@ external interface CalloutProps : IntentProps, PropsWithClassName, PropsWithChil
  *
  * https://blueprintjs.com/docs/#core/components/callout
  */
-open external class Callout : AbstractPureComponent2<CalloutProps, State> {
+open external class Callout : AbstractPureComponent<CalloutProps, State> {
     override fun render(): ReactElement<CalloutProps>
 }

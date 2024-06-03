@@ -6,6 +6,8 @@ import react.*
 
 external interface DialogFooterProps : PropsWithClassName, PropsWithChildren {
 
+    // 'children' is declared via PropsWithChildren
+
     /**
      * Dialog actions (typically buttons) are rendered on the right side of the footer.
      */
@@ -34,8 +36,8 @@ external interface DialogFooterProps : PropsWithClassName, PropsWithChildren {
 /**
  * Dialog footer component.
  *
- * @see https://blueprintjs.com/docs/#core/components/dialog.dialog-footer-props
+ * https://blueprintjs.com/docs/#core/components/dialog.dialog-footer-props
  */
-external class DialogFooter : AbstractPureComponent2<DialogFooterProps, State> {
+external class DialogFooter : AbstractPureComponent<DialogFooterProps, State> {
     override fun render(): ReactElement<DialogFooterProps>
 }

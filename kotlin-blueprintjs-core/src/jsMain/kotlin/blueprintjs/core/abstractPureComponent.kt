@@ -2,12 +2,10 @@
 
 package blueprintjs.core
 
-import react.PureComponent
-import react.PropsWithChildren
-import react.State
+import react.*
 
 /**
  * An abstract component that Blueprint components can extend
  * in order to add some common functionality like runtime props validation.
  */
-abstract external class AbstractPureComponent2<P : PropsWithChildren, S : State> : PureComponent<P, S>
+abstract external class AbstractPureComponent<P : PropsWithChildren, S : State> : PureComponent<P, S>

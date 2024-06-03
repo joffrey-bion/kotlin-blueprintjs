@@ -2,7 +2,7 @@
 
 package blueprintjs.core
 
-// exported as an object named "Colors" in index.d.ts
+// @blueprintjs/colors exported as an object named "Colors" from common/index.d.ts
 external object Colors {
     val CERULEAN1: String = definedExternally
     val CERULEAN2: String = definedExternally

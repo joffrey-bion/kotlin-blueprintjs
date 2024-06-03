@@ -2,22 +2,17 @@
 
 package blueprintjs.core
 
-import react.PropsWithClassName
-import react.ReactElement
-import react.State
+import react.*
 import react.dom.html.TableHTMLAttributes
 import web.html.HTMLTableElement
 
 // in BlueprintJS, HTMLTableProps doesn't extend IProps, and yet className works fine...
-external interface HTMLTableProps : PropsWithClassName, TableHTMLAttributes<HTMLTableElement>, IElementRefProps<HTMLTableElement> {
+external interface HTMLTableProps : PropsWithClassName, TableHTMLAttributes<HTMLTableElement>, PropsWithRef<HTMLTableElement> {
     /** Enables borders between rows and cells. */
     var bordered: Boolean?
 
     /** Use compact appearance with less padding. */
     var compact: Boolean?
-
-    @Deprecated("Deprecated in BlueprintJS, use 'compact' instead", ReplaceWith("compact"))
-    var condensed: Boolean?
 
     /** Enables hover styles on row. */
     var interactive: Boolean?
@@ -31,6 +26,4 @@ external interface HTMLTableProps : PropsWithClassName, TableHTMLAttributes<HTML
  *
  * https://blueprintjs.com/docs/#core/components/html-table
  */
-open external class HTMLTable : AbstractPureComponent2<HTMLTableProps, State> {
-    override fun render(): ReactElement<HTMLTableProps>
-}
+external val HTMLTable : FC<HTMLTableProps>

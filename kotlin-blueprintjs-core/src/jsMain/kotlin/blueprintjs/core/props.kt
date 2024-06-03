@@ -4,20 +4,17 @@ package blueprintjs.core
 
 import react.*
 import react.dom.events.*
-import web.cssom.*
 import web.html.*
+import web.window.*
 import kotlin.js.Json
 
 external val DISPLAYNAME_PREFIX: String
 
-/**
- * A shared base interface for all Blueprint component props.
- */
-external interface IProps : PropsWithClassName {
-    // redeclared here because re-defined in TS with this doc.
-    /** A space-delimited list of class names to pass along to a child element. */
-    override var className: ClassName?
-}
+// NOTE: the following types are declared in props.nonexternals.kt instead (because typealiases are not external)
+//
+// HTMLDivProps
+// HTMLInputProps
+// MaybeElement
 
 external interface IntentProps {
     /** Visual intent color to apply to element. */
@@ -28,7 +25,7 @@ external interface IntentProps {
  * Interface for a clickable action, such as a button or menu item.
  * These props can be spready directly to a `<Button>` or `<MenuItem>` element.
  */
-external interface ActionProps : IntentProps, PropsWithClassName {
+external interface ActionProps<T : HTMLElement> : IntentProps, PropsWithClassName {
     /** Whether this action is non-interactive. */
     var disabled: Boolean?
 
@@ -36,10 +33,13 @@ external interface ActionProps : IntentProps, PropsWithClassName {
     var icon: IconName? // IconName | MaybeElement
 
     /** Click event handler. */
-    var onClick: MouseEventHandler<HTMLElement>?
+    var onClick: MouseEventHandler<T>?
+
+    /** Focus event handler. */
+    var onFocus: FocusEventHandler<T>?
 
     /** Action text. Can be any single React renderable. */
-    var text: String?
+    var text: ReactNode?
 }
 
 /** Interface for a link, with support for customizing target window. */
@@ -48,41 +48,41 @@ external interface LinkProps {
     var href: String?
 
     /** Link target attribute. Use `"_blank"` to open in a new window. */
-    var target: String?
+    var target: WindowTarget? // type of HTMLAnchorElement.target (for React.HTMLAttributeAnchorTarget)
 }
 
-/** Interface for a controlled input. */
-@Deprecated("Use ControlledProps2", ReplaceWith("ControlledProps2"))
-external interface IControlledProps {
-    /** Initial value of the input, for uncontrolled usage. */
-    var defaultValue: String?
-
-    /** Change event handler. Use `event.target.value` for new value. */
-    var onChange: FormEventHandler<HTMLElement>?
-
-    /** Form value of the input, for controlled usage. */
-    var value: String?
+/**
+ * Interface for a controlled or uncontrolled component, typically a form control.
+ */
+external interface ControlledValueProps<T, E : HTMLElement> {
+    /**
+     * Initial value for uncontrolled usage. Mutually exclusive with `value` prop.
+     */
+    var defaultValue: T?
+    /**
+     * Controlled value. Mutually exclusive with `defaultValue` prop.
+     */
+    var value: T?
+    /**
+     * Callback invoked when the component value changes, typically via user interaction, in both controlled and
+     * uncontrolled mode.
+     *
+     * Using this prop instead of `onChange` can help avoid common bugs in React 16 related to Event Pooling
+     * where developers forget to save the text value from a change event or call `event.persist()`.
+     *
+     * https://legacy.reactjs.org/docs/legacy-event-pooling.html
+     */
+    var onValueChange: ((value: T, targetElement: E?) -> Unit)?
 }
 
-/** Interface for a controlled input. */
-external interface ControlledProps2 {
-    /** Initial value of the input, for uncontrolled usage. */
-    var defaultValue: Any? // using Any? instead of String? to avoid conflict with react.dom.html.HTMLAttributes.defaultValue
-
-    /** Form value of the input, for controlled usage. */
-    var value: Any? // using Any? instead of String? to avoid conflict with react.dom.html.HTMLAttributes.defaultValue
-}
-
-external interface IElementRefProps<E : HTMLElement> {
-    /** A ref handler or a ref object that receives the native HTML element rendered by this component. */
-    var elementRef: Ref<E>
-}
+@Deprecated(level = DeprecationLevel.ERROR, message = "check props.kt")
+external interface ControlledProps : ControlledValueProps<String, HTMLInputElement>
 
 /**
  * An interface for an option in a list, such as in a `<select>` or `RadioGroup`.
  * These props can be spread directly to an `<option>` or `<Radio>` element.
  */
-external interface OptionProps : IProps {
+external interface OptionProps<T /* string | number */> : PropsWithClassName {
     /** Whether this option is non-interactive. */
     var disabled: Boolean?
 
@@ -90,7 +90,7 @@ external interface OptionProps : IProps {
     var label: String?
 
     /** Value of this option (string or number). */
-    var value: Any? // String | Number
+    var value: T
 }
 
 /**

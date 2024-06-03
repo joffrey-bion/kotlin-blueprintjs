@@ -12,12 +12,14 @@ import web.html.HTMLElement
 external interface OverlayableProps : OverlayLifecycleProps {
     /**
      * Whether the overlay should acquire application focus when it first opens.
+     *
      * @default true
      */
     var autoFocus: Boolean?
 
     /**
      * Whether pressing the `esc` key should invoke `onClose`.
+     *
      * @default true
      */
     var canEscapeKeyClose: Boolean?
@@ -27,6 +29,7 @@ external interface OverlayableProps : OverlayLifecycleProps {
      * to focus an element outside the overlay and this prop is enabled, then the overlay will
      * immediately bring focus back to itself. If you are nesting overlay components, either disable
      * this prop on the "outermost" overlays or mark the nested ones `usePortal={false}`.
+     *
      * @default true
      */
     var enforceFocus: Boolean?
@@ -36,15 +39,25 @@ external interface OverlayableProps : OverlayLifecycleProps {
      * to the DOM when the overlay is opened for the first time; otherwise this happens when the
      * component mounts. Lazy mounting provides noticeable performance improvements if you have lots
      * of overlays at once, such as on each row of a table.
+     *
      * @default true
      */
     var lazy: Boolean?
+
+    /**
+     * Whether the application should return focus to the last active element in the
+     * document after this overlay closes.
+     *
+     * @default true
+     */
+    var shouldReturnFocusOnClose: Boolean?
 
     /**
      * Indicates how long (in milliseconds) the overlay's enter/leave transition takes.
      * This is used by React `CSSTransition` to know when a transition completes and must match
      * the duration of the animation in CSS. Only set this prop if you override Blueprint's default
      * transitions with new transitions of a different length.
+     *
      * @default 300
      */
     var transitionDuration: Int?
@@ -59,6 +72,7 @@ external interface OverlayableProps : OverlayLifecycleProps {
      *
      * Set this prop to `false` on nested overlays (such as `Dialog` or `Popover`) to ensure that they
      * are rendered above their parents.
+     *
      * @default true
      */
     var usePortal: Boolean?
@@ -72,9 +86,23 @@ external interface OverlayableProps : OverlayLifecycleProps {
     /**
      * The container element into which the overlay renders its contents, when `usePortal` is `true`.
      * This prop is ignored if `usePortal` is `false`.
+     *
      * @default document.body
      */
     var portalContainer: HTMLElement?
+    /**
+     * A list of DOM events which should be stopped from propagating through the Portal.
+     * This prop is ignored if `usePortal` is `false`.
+     *
+     * https://legacy.reactjs.org/docs/portals.html#event-bubbling-through-portals
+     *
+     * https://github.com/palantir/blueprint/issues/6124
+     *
+     * https://github.com/palantir/blueprint/issues/6580
+     *
+     * @deprecated this prop's implementation no longer works in React v17+
+     */
+    var portalStopPropagationEvents: Array<String>? // Array<keyof HTMLElementEventMap>
 
     /**
      * A callback that is invoked when user interaction causes the overlay to close, such as
@@ -137,6 +165,9 @@ external interface BackdropProps {
 }
 
 external interface OverlayProps : OverlayableProps, BackdropProps, PropsWithClassName, PropsWithChildren {
+
+    // 'children' is declared via PropsWithChildren
+
     /**
      * Toggles the visibility of the overlay and its children.
      * This prop is required because the component is controlled.
@@ -149,12 +180,4 @@ external interface OverlayProps : OverlayableProps, BackdropProps, PropsWithClas
      * @default Classes.OVERLAY
      */
     var transitionName: String?
-}
-
-external interface OverlayState : State {
-    var hasEverOpened: Boolean?
-}
-
-external class Overlay : AbstractPureComponent2<OverlayProps, OverlayState> {
-    override fun render(): ReactElement<OverlayProps>
 }

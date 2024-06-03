@@ -12,7 +12,9 @@ external object NonIdealStateIconSize {
 
 external interface NonIdealStateProps : PropsWithClassName, PropsWithChildren {
     /** An action to resolve the non-ideal state which appears after `description`. */
-    var action: ReactElement<*>?
+    var action: ReactElement<*>? // React.JSX.Element | null
+
+    // 'children' is declared via PropsWithChildren
 
     /**
      * A longer description of the non-ideal state.
@@ -31,6 +33,13 @@ external interface NonIdealStateProps : PropsWithClassName, PropsWithChildren {
     var iconSize: Int?
 
     /**
+     * Whether the icon should use a muted style.
+     *
+     * @default true
+     */
+    var iconMuted: Boolean?
+
+    /**
      * Component layout, either vertical or horizontal.
      *
      * @default "vertical"
@@ -46,6 +55,6 @@ external interface NonIdealStateProps : PropsWithClassName, PropsWithChildren {
  *
  * https://blueprintjs.com/docs/#core/components/non-ideal-state
  */
-external class NonIdealState : AbstractPureComponent2<NonIdealStateProps, State> {
+external class NonIdealState : AbstractPureComponent<NonIdealStateProps, State> {
     override fun render(): ReactElement<NonIdealStateProps>
 }

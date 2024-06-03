@@ -6,6 +6,8 @@ import react.*
 
 external interface DialogBodyProps : PropsWithClassName, PropsWithChildren {
 
+    // 'children' is declared via PropsWithChildren
+
     /**
      * Enable scrolling for the container
      *
@@ -19,6 +21,6 @@ external interface DialogBodyProps : PropsWithClassName, PropsWithChildren {
  *
  * https://blueprintjs.com/docs/#core/components/dialog.dialog-body-props
  */
-external class DialogBody : AbstractPureComponent2<DialogBodyProps, State> {
+external class DialogBody : AbstractPureComponent<DialogBodyProps, State> {
     override fun render(): ReactElement<DialogBodyProps>
 }

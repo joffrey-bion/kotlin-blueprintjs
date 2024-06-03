@@ -2,10 +2,9 @@
 
 package blueprintjs.core
 
-import react.PropsWithChildren
-import react.PropsWithClassName
-import react.State
-import react.ReactElement
+import react.*
+import react.dom.html.*
+import web.html.*
 
 external object SpinnerSize {
     val SMALL: Int = definedExternally
@@ -13,7 +12,7 @@ external object SpinnerSize {
     val LARGE: Int = definedExternally
 }
 
-external interface SpinnerProps : PropsWithClassName, PropsWithChildren, IntentProps {
+external interface SpinnerProps<T : HTMLElement> : PropsWithClassName, IntentProps, HTMLAttributes<T> {
     /**
      * Width and height of the spinner in pixels. The size cannot be less than
      * 10px.
@@ -45,6 +44,6 @@ external interface SpinnerProps : PropsWithClassName, PropsWithChildren, IntentP
  *
  * https://blueprintjs.com/docs/#core/components/spinner
  */
-external class Spinner : AbstractPureComponent2<SpinnerProps, State> {
-    override fun render(): ReactElement<SpinnerProps>
+external class Spinner : AbstractPureComponent<SpinnerProps<HTMLElement>, State> {
+    override fun render(): ReactElement<*>
 }
