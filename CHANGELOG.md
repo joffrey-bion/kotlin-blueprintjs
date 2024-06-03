@@ -1,5 +1,17 @@
 # Change Log
 
+## [9](https://github.com/joffrey-bion/kotlin-blueprintjs/tree/9) (2024-06-03)
+[View commits](https://github.com/joffrey-bion/kotlin-blueprintjs/compare/8...9)
+
+**Implemented enhancements:**
+
+- Upgrade to BlueprintJS 5 [\#137](https://github.com/joffrey-bion/kotlin-blueprintjs/issues/137)
+
+**Upgraded dependencies:**
+
+- Upgrade to Kotlin 2.0 [\#138](https://github.com/joffrey-bion/kotlin-blueprintjs/issues/138)
+- Bump org.jetbrains.kotlin\-wrappers:kotlin\-wrappers\-bom from 1.0.0\-pre.488 to 1.0.0\-pre.754 [\#135](https://github.com/joffrey-bion/kotlin-blueprintjs/pull/135) ([@dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [8](https://github.com/joffrey-bion/kotlin-blueprintjs/tree/8) (2023-01-31)
 [View commits](https://github.com/joffrey-bion/kotlin-blueprintjs/compare/7...8)
 
