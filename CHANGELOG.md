@@ -1,5 +1,12 @@
 # Change Log
 
+## [10](https://github.com/joffrey-bion/kotlin-blueprintjs/tree/10) (2024-06-06)
+[View commits](https://github.com/joffrey-bion/kotlin-blueprintjs/compare/9...10)
+
+**Fixed bugs:**
+
+- `props` are undefined in `BpPopover` [\#139](https://github.com/joffrey-bion/kotlin-blueprintjs/issues/139)
+
 ## [9](https://github.com/joffrey-bion/kotlin-blueprintjs/tree/9) (2024-06-03)
 [View commits](https://github.com/joffrey-bion/kotlin-blueprintjs/compare/8...9)
 
