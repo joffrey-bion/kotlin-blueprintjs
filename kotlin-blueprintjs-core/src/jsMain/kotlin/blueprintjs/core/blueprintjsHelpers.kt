@@ -21,12 +21,10 @@ val BpNonIdealState = NonIdealState::class.react
 )
 val BpOverlay = Overlay::class.react
 val BpOverlay2 = Overlay2
-val BpPopover = DefaultPopover::class.react
+val BpPopover = Popover::class.js.unsafeCast<ComponentClass<PopoverProps<DefaultPopoverTargetHTMLProps>>>()
 val BpSpinner = Spinner::class.react
 val BpTag = Tag
 val BpText = Text
-
-private class DefaultPopover : Popover<DefaultPopoverTargetHTMLProps>()
 
 var NonIdealStateProps.titleText: String?
     get() = title?.asStringOrNull()
