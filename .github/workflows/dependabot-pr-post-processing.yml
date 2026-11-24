@@ -24,5 +24,7 @@ jobs:
         org.jetbrains.dokka:dokka-gradle-plugin
         ru.vyarus.github-info
         ru.vyarus:gradle-github-info-plugin
+      # We don't have a WASM target, so we override to only run the JS task
+      update-kotlin-lock-files-command: ./gradlew kotlinUpgradeYarnLock
     secrets:
       github-token: ${{ secrets.GH_PAT_FOR_DEPENDABOT }}
