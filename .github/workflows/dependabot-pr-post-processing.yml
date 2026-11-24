@@ -20,7 +20,9 @@ jobs:
         io.github.gradle-nexus.publish-plugin
         org.hildan.github.changelog
         org.hildan.kotlin-publish
-        org.jetbrains.dokka
+        org.hildan.gradle:gradle-kotlin-publish-plugin
+        org.jetbrains.dokka:dokka-gradle-plugin
         ru.vyarus.github-info
+        ru.vyarus:gradle-github-info-plugin
     secrets:
       github-token: ${{ secrets.GH_PAT_FOR_DEPENDABOT }}
