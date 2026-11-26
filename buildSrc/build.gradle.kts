@@ -12,7 +12,7 @@ dependencies {
     implementation(gradleKotlinDsl())
 
     // we're not using the kotlin("gradle-plugin", ...) shortcut because dependabot doesn't understand it
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.4.21")
     implementation("org.jetbrains.dokka:dokka-gradle-plugin:2.3.0")
 
     implementation("org.hildan.gradle:gradle-kotlin-publish-plugin:1.3.0")
